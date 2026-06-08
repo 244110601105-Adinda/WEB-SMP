@@ -420,9 +420,9 @@
                                     Berita <i class="fa-solid fa-chevron-down text-[9px] ml-1"></i>
                                 </button>
                                 <div class="dropdown-content">
-                                    <a href="berita.php">📰 Berita</a>
-                                    <a href="pengumuman.php">📢 Pengumuman</a>
-                                    <a href="agenda.php">📅 Agenda</a>
+                                    <a href="berita.php">Berita</a>
+                                    <a href="pengumuman.php">Pengumuman</a>
+                                    <a href="agenda.php">Agenda</a>
                                 </div>
                             </div>
                             
@@ -431,13 +431,13 @@
                                     Profil <i class="fa-solid fa-chevron-down text-[9px] ml-1"></i>
                                 </button>
                                 <div class="dropdown-content">
-                                    <a href="profil.php">🏫 Profil Sekolah</a>
-                                    <a href="sejarah.php">📜 Sejarah</a>
-                                    <a href="visi-misi.php">🎯 Visi & Misi</a>
-                                    <a href="struktur-organisasi.php">📊 Struktur Organisasi</a>
-                                    <a href="tenaga-edukatif.php">👨‍🏫 Tenaga Edukatif</a>
-                                    <a href="tenaga-non-edukatif.php">👩‍💼 Tenaga Non Edukatif</a>
-                                    <a href="sarana-prasarana.php">🏢 Sarana Prasarana</a>
+                                    <a href="profil.php">Profil Sekolah</a>
+                                    <a href="sejarah.php">Sejarah</a>
+                                    <a href="visi-misi.php">Visi & Misi</a>
+                                    <a href="struktur-organisasi.php">Struktur Organisasi</a>
+                                    <a href="tenaga-edukatif.php">Tenaga Edukatif</a>
+                                    <a href="tenaga-non-edukatif.php">Tenaga Non Edukatif</a>
+                                    <a href="sarana-prasarana.php">Sarana Prasarana</a>
                                 </div>
                             </div>
                             
@@ -446,10 +446,10 @@
                                     Pendidikan <i class="fa-solid fa-chevron-down text-[9px] ml-1"></i>
                                 </button>
                                 <div class="dropdown-content">
-                                    <a href="struktur-kurikulum.php">📖 Struktur Kurikulum</a>
-                                    <a href="kalender-akademik.php">📆 Kalender Akademik</a>
-                                    <a href="rekap-ujian.php">📊 Rekap Ujian Sekolah</a>
-                                    <a href="ekstrakurikuler.php">⚽ Ekstrakurikuler</a>
+                                    <a href="struktur-kurikulum.php">Struktur Kurikulum</a>
+                                    <a href="kalender-akademik.php">Kalender Akademik</a>
+                                    <a href="rekap-ujian.php">Rekap Ujian Sekolah</a>
+                                    <a href="ekstrakurikuler.php">Ekstrakurikuler</a>
                                 </div>
                             </div>
                             
@@ -460,9 +460,9 @@
                                     Prestasi <i class="fa-solid fa-chevron-down text-[9px] ml-1"></i>
                                 </button>
                                 <div class="dropdown-content">
-                                    <a href="prestasi-sekolah.php">🏆 Prestasi Sekolah</a>
-                                    <a href="prestasi-siswa.php">⭐ Prestasi Siswa</a>
-                                    <a href="prestasi-guru.php">👨‍🏫 Prestasi Guru</a>
+                                    <a href="prestasi-sekolah.php">Prestasi Sekolah</a>
+                                    <a href="prestasi-siswa.php">Prestasi Siswa</a>
+                                    <a href="prestasi-guru.php">Prestasi Guru</a>
                                 </div>
                             </div>
                             
@@ -471,8 +471,8 @@
                                     Alumni <i class="fa-solid fa-chevron-down text-[9px] ml-1"></i>
                                 </button>
                                 <div class="dropdown-content">
-                                    <a href="data-alumni.php">📋 Data Alumni</a>
-                                    <a href="penelusuran-alumni.php">🔍 Penelusuran Alumni</a>
+                                    <a href="data-alumni.php">Data Alumni</a>
+                                    <a href="penelusuran-alumni.php">Penelusuran Alumni</a>
                                 </div>
                             </div>
                             
@@ -481,8 +481,8 @@
                                     Galeri <i class="fa-solid fa-chevron-down text-[9px] ml-1"></i>
                                 </button>
                                 <div class="dropdown-content">
-                                    <a href="galeri-foto.php">📸 Foto</a>
-                                    <a href="galeri-video.php">🎥 Video</a>
+                                    <a href="galeri-foto.php">Foto</a>
+                                    <a href="galeri-video.php">Video</a>
                                 </div>
                             </div>
                             
@@ -491,7 +491,7 @@
                                     SIM <i class="fa-solid fa-chevron-down text-[9px] ml-1"></i>
                                 </button>
                                 <div class="dropdown-content">
-                                    <a href="https://siak.smpn1buayan.sch.id/">💻 SIAK</a>
+                                    <a href="https://siak.smpn1buayan.sch.id/">SIAK</a>
                                 </div>
                             </div>
                             <a href="download.php" style="color:#333434; font-family: 'Inria Serif', serif;">Download</a>

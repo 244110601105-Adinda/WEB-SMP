@@ -393,13 +393,13 @@
     // DATA EKSTRAKURIKULER - GANTI DENGAN GAMBAR YANG ANDA PUNYA
     // Simpan gambar di folder "images" dan sesuaikan nama filenya
     $eskulList = [
-        ['nama' => 'TARI', 'gambar' => 'images/tari.jpg'],
-        ['nama' => 'PMR', 'gambar' => 'images/pmr.jpg'],
-        ['nama' => 'PRAMUKA', 'gambar' => 'images/pramuka.jpg'],
-        ['nama' => 'OLAHRAGA', 'gambar' => 'images/olahraga.jpg'],
-        ['nama' => 'DRUMBAND', 'gambar' => 'images/drumband.jpg'],
-        ['nama' => 'ENGLISH CLUB', 'gambar' => 'images/english-club.jpg'],
-        ['nama' => 'SPENSABU SAINS CLUB', 'gambar' => 'images/sains-club.jpg'],
+        ['nama' => 'TARI', 'gambar' => 'https://www.smpn1buayan.sch.id/assets/img/foto/84f4388bb794fb727d154224c4f4e836.jpeg'],
+        ['nama' => 'PMR', 'gambar' => 'assets/pmr.jpeg'],
+        ['nama' => 'PRAMUKA', 'gambar' => 'https://www.smpn1buayan.sch.id/assets/img/foto/51cdc67f3d7cb5f960f19730311d25e2.jpeg'],
+        ['nama' => 'OLAHRAGA', 'gambar' => 'https://www.smpn1buayan.sch.id/assets/img/foto/04028de3efd05360e630160c3bbb837a.jpg'],
+        ['nama' => 'DRUMBAND', 'gambar' => 'assets/drumband.jpeg'],
+        ['nama' => 'ENGLISH CLUB', 'gambar' => 'https://www.smpn1buayan.sch.id/assets/img/foto/0ca6080e0d53e832c9ce3d901111e4e4.jpg'],
+        ['nama' => 'SPENSABU SAINS CLUB', 'gambar' => 'https://www.smpn1buayan.sch.id/assets/img/foto/a12718f71e0bf26c48a3a9dde896f23c.jpg'],
     ];
     ?>
     
@@ -425,94 +425,87 @@
                             <i class="fa-solid fa-bars"></i>
                         </button>
                         
-                        <!-- Desktop Navigation Menu dengan Dropdown icon chevron (mirip home) -->
+                         <!-- Desktop Navigation Menu dengan Dropdown -->
                         <div class="nav-menu-desktop">
                             <a href="home.php" style="font-family: 'Inria Serif', serif;">Home</a>
                             
-                            <!-- Dropdown Berita -->
                             <div class="dropdown">
-                                <button class="dropbtn" onclick="toggleDropdown(event, this)" style="font-family: 'Inria Serif', serif;">
-                                    Berita <i class="fa-solid fa-chevron-down text-[8px] ml-1"></i>
+                                <button class="dropbtn" onclick="toggleDropdown(event, this)">
+                                    Berita <i class="fa-solid fa-chevron-down text-[9px] ml-1"></i>
                                 </button>
                                 <div class="dropdown-content">
-                                    <a href="berita.php">📰 Berita</a>
-                                    <a href="pengumuman.php">📢 Pengumuman</a>
-                                    <a href="agenda.php">📅 Agenda</a>
+                                    <a href="berita.php">Berita</a>
+                                    <a href="pengumuman.php">Pengumuman</a>
+                                    <a href="agenda.php">Agenda</a>
                                 </div>
                             </div>
                             
-                            <!-- Dropdown Profil -->
                             <div class="dropdown">
-                                <button class="dropbtn" onclick="toggleDropdown(event, this)" style="font-family: 'Inria Serif', serif;">
-                                    Profil <i class="fa-solid fa-chevron-down text-[8px] ml-1"></i>
+                                <button class="dropbtn" onclick="toggleDropdown(event, this)">
+                                    Profil <i class="fa-solid fa-chevron-down text-[9px] ml-1"></i>
                                 </button>
                                 <div class="dropdown-content">
-                                    <a href="profil.php">🏫 Profil Sekolah</a>
-                                    <a href="sejarah.php">📜 Sejarah</a>
-                                    <a href="visi-misi.php">🎯 Visi & Misi</a>
-                                    <a href="struktur-organisasi.php">📊 Struktur Organisasi</a>
-                                    <a href="tenaga-edukatif.php">👨‍🏫 Tenaga Edukatif</a>
-                                    <a href="tenaga-non-edukatif.php">👩‍💼 Tenaga Non Edukatif</a>
-                                    <a href="sarana-prasarana.php">🏢 Sarana Prasarana</a>
+                                    <a href="profil.php">Profil Sekolah</a>
+                                    <a href="sejarah.php">Sejarah</a>
+                                    <a href="visi-misi.php">Visi & Misi</a>
+                                    <a href="struktur-organisasi.php">Struktur Organisasi</a>
+                                    <a href="tenaga-edukatif.php">Tenaga Edukatif</a>
+                                    <a href="tenaga-non-edukatif.php">Tenaga Non Edukatif</a>
+                                    <a href="sarana-prasarana.php">Sarana Prasarana</a>
                                 </div>
                             </div>
                             
-                            <!-- Dropdown Pendidikan -->
                             <div class="dropdown">
-                                <button class="dropbtn" onclick="toggleDropdown(event, this)" style="font-family: 'Inria Serif', serif;">
-                                    Pendidikan <i class="fa-solid fa-chevron-down text-[8px] ml-1"></i>
+                                <button class="dropbtn" onclick="toggleDropdown(event, this)">
+                                    Pendidikan <i class="fa-solid fa-chevron-down text-[9px] ml-1"></i>
                                 </button>
                                 <div class="dropdown-content">
-                                    <a href="struktur-kurikulum.php">📖 Struktur Kurikulum</a>
-                                    <a href="kalender-akademik.php">📆 Kalender Akademik</a>
-                                    <a href="rekap-ujian.php">📊 Rekap Ujian Sekolah</a>
-                                    <a href="ekstrakurikuler.php">⚽ Ekstrakurikuler</a>
+                                    <a href="struktur-kurikulum.php">Struktur Kurikulum</a>
+                                    <a href="kalender-akademik.php">Kalender Akademik</a>
+                                    <a href="rekap-ujian.php">Rekap Ujian Sekolah</a>
+                                    <a href="ekstrakurikuler.php">Ekstrakurikuler</a>
                                 </div>
                             </div>
                             
                             <a href="peserta-didik.php" style="font-family: 'Inria Serif', serif;">Peserta Didik</a>
                             
-                            <!-- Dropdown Prestasi -->
                             <div class="dropdown">
-                                <button class="dropbtn" onclick="toggleDropdown(event, this)" style="font-family: 'Inria Serif', serif;">
-                                    Prestasi <i class="fa-solid fa-chevron-down text-[8px] ml-1"></i>
+                                <button class="dropbtn" onclick="toggleDropdown(event, this)">
+                                    Prestasi <i class="fa-solid fa-chevron-down text-[9px] ml-1"></i>
                                 </button>
                                 <div class="dropdown-content">
-                                    <a href="prestasi-sekolah.php">🏆 Prestasi Sekolah</a>
-                                    <a href="prestasi-siswa.php">⭐ Prestasi Siswa</a>
-                                    <a href="prestasi-guru.php">👨‍🏫 Prestasi Guru</a>
+                                    <a href="prestasi-sekolah.php">Prestasi Sekolah</a>
+                                    <a href="prestasi-siswa.php">Prestasi Siswa</a>
+                                    <a href="prestasi-guru.php">Prestasi Guru</a>
                                 </div>
                             </div>
                             
-                            <!-- Dropdown Alumni -->
                             <div class="dropdown">
-                                <button class="dropbtn" onclick="toggleDropdown(event, this)" style="font-family: 'Inria Serif', serif;">
-                                    Alumni <i class="fa-solid fa-chevron-down text-[8px] ml-1"></i>
+                                <button class="dropbtn" onclick="toggleDropdown(event, this)">
+                                    Alumni <i class="fa-solid fa-chevron-down text-[9px] ml-1"></i>
                                 </button>
                                 <div class="dropdown-content">
-                                    <a href="data-alumni.php">📋 Data Alumni</a>
-                                    <a href="penelusuran-alumni.php">🔍 Penelusuran Alumni</a>
+                                    <a href="data-alumni.php">Data Alumni</a>
+                                    <a href="penelusuran-alumni.php">Penelusuran Alumni</a>
                                 </div>
                             </div>
                             
-                            <!-- Dropdown Galeri -->
                             <div class="dropdown">
-                                <button class="dropbtn" onclick="toggleDropdown(event, this)" style="font-family: 'Inria Serif', serif;">
-                                    Galeri <i class="fa-solid fa-chevron-down text-[8px] ml-1"></i>
+                                <button class="dropbtn" onclick="toggleDropdown(event, this)">
+                                    Galeri <i class="fa-solid fa-chevron-down text-[9px] ml-1"></i>
                                 </button>
                                 <div class="dropdown-content">
-                                    <a href="galeri-foto.php">📸 Foto</a>
-                                    <a href="galeri-video.php">🎥 Video</a>
+                                    <a href="galeri-foto.php">Foto</a>
+                                    <a href="galeri-video.php">Video</a>
                                 </div>
                             </div>
                             
-                            <!-- Dropdown SIM -->
                             <div class="dropdown">
-                                <button class="dropbtn" onclick="toggleDropdown(event, this)" style="font-family: 'Inria Serif', serif;">
-                                    SIM <i class="fa-solid fa-chevron-down text-[8px] ml-1"></i>
+                                <button class="dropbtn" onclick="toggleDropdown(event, this)">
+                                    SIM <i class="fa-solid fa-chevron-down text-[9px] ml-1"></i>
                                 </button>
                                 <div class="dropdown-content">
-                                    <a href="https://siak.smpn1buayan.sch.id/" target="_blank">💻 SIAK</a>
+                                    <a href="https://siak.smpn1buayan.sch.id/">SIAK</a>
                                 </div>
                             </div>
                             <a href="download.php" style="color:#333434; font-family: 'Inria Serif', serif;">Download</a>
