@@ -187,7 +187,23 @@
         <div class="flex flex-col items-start self-stretch bg-[#EAF1F4]">
             <div class="self-stretch">
 
-                  <!-- Desktop Navigation Menu dengan Dropdown -->
+                <!-- ============ NAVBAR (sama persis dengan halaman home dan video) ============ -->
+                <div class="bg-white shadow-sm">
+                    <div class="desktop-nav">
+                        <div class="logo-area">
+                            <img src="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/8099c8a7-96f3-4300-a78c-734c3122cf26"
+                                 class="w-10 h-10 object-contain" alt="School Logo">
+                            <div class="flex flex-col shrink-0 items-start ml-2">
+                                <span class="text-black text-sm font-bold" style="font-family: 'Inria Serif', serif;">SMP Negeri 1</span>
+                                <span class="text-black text-xs" style="font-family: 'Inria Serif', serif;">Buayan</span>
+                            </div>
+                        </div>
+                        
+                        <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
+                            <i class="fa-solid fa-bars"></i>
+                        </button>
+                        
+                        <!-- Desktop Navigation Menu dengan Dropdown -->
                         <div class="nav-menu-desktop">
                             <a href="home.php" style="font-family: 'Inria Serif', serif;">Home</a>
                             
@@ -196,9 +212,9 @@
                                     Berita <i class="fa-solid fa-chevron-down text-[9px] ml-1"></i>
                                 </button>
                                 <div class="dropdown-content">
-                                    <a href="berita.php">Berita</a>
-                                    <a href="pengumuman.php">Pengumuman</a>
-                                    <a href="agenda.php">Agenda</a>
+                                    <a href="berita.php">📰 Berita</a>
+                                    <a href="pengumuman.php">📢 Pengumuman</a>
+                                    <a href="agenda.php">📅 Agenda</a>
                                 </div>
                             </div>
                             
@@ -207,13 +223,13 @@
                                     Profil <i class="fa-solid fa-chevron-down text-[9px] ml-1"></i>
                                 </button>
                                 <div class="dropdown-content">
-                                    <a href="profil.php">Profil Sekolah</a>
-                                    <a href="sejarah.php">Sejarah</a>
-                                    <a href="visi-misi.php">Visi & Misi</a>
-                                    <a href="struktur-organisasi.php">Struktur Organisasi</a>
-                                    <a href="tenaga-edukatif.php">Tenaga Edukatif</a>
-                                    <a href="tenaga-non-edukatif.php">Tenaga Non Edukatif</a>
-                                    <a href="sarana-prasarana.php">Sarana Prasarana</a>
+                                    <a href="profil.php">🏫 Profil Sekolah</a>
+                                    <a href="sejarah.php">📜 Sejarah</a>
+                                    <a href="visi-misi.php">🎯 Visi & Misi</a>
+                                    <a href="struktur-organisasi.php">📊 Struktur Organisasi</a>
+                                    <a href="tenaga-edukatif.php">👨‍🏫 Tenaga Edukatif</a>
+                                    <a href="tenaga-non-edukatif.php">👩‍💼 Tenaga Non Edukatif</a>
+                                    <a href="sarana-prasarana.php">🏢 Sarana Prasarana</a>
                                 </div>
                             </div>
                             
@@ -222,10 +238,10 @@
                                     Pendidikan <i class="fa-solid fa-chevron-down text-[9px] ml-1"></i>
                                 </button>
                                 <div class="dropdown-content">
-                                    <a href="struktur-kurikulum.php">Struktur Kurikulum</a>
-                                    <a href="kalender-akademik.php">Kalender Akademik</a>
-                                    <a href="rekap-ujian.php">Rekap Ujian Sekolah</a>
-                                    <a href="ekstrakurikuler.php">Ekstrakurikuler</a>
+                                    <a href="struktur-kurikulum.php">📖 Struktur Kurikulum</a>
+                                    <a href="kalender-akademik.php">📆 Kalender Akademik</a>
+                                    <a href="rekap-ujian.php">📊 Rekap Ujian Sekolah</a>
+                                    <a href="ekstrakurikuler.php">⚽ Ekstrakurikuler</a>
                                 </div>
                             </div>
                             
@@ -236,9 +252,9 @@
                                     Prestasi <i class="fa-solid fa-chevron-down text-[9px] ml-1"></i>
                                 </button>
                                 <div class="dropdown-content">
-                                    <a href="prestasi-sekolah.php">Prestasi Sekolah</a>
-                                    <a href="prestasi-siswa.php">Prestasi Siswa</a>
-                                    <a href="prestasi-guru.php">Prestasi Guru</a>
+                                    <a href="prestasi-sekolah.php">🏆 Prestasi Sekolah</a>
+                                    <a href="prestasi-siswa.php">⭐ Prestasi Siswa</a>
+                                    <a href="prestasi-guru.php">👨‍🏫 Prestasi Guru</a>
                                 </div>
                             </div>
                             
@@ -247,18 +263,18 @@
                                     Alumni <i class="fa-solid fa-chevron-down text-[9px] ml-1"></i>
                                 </button>
                                 <div class="dropdown-content">
-                                    <a href="data-alumni.php">Data Alumni</a>
-                                    <a href="penelusuran-alumni.php">Penelusuran Alumni</a>
+                                    <a href="data-alumni.php">📋 Data Alumni</a>
+                                    <a href="penelusuran-alumni.php">🔍 Penelusuran Alumni</a>
                                 </div>
                             </div>
                             
                             <div class="dropdown">
-                                <button class="dropbtn" onclick="toggleDropdown(event, this)">
+                                <button class="dropbtn" onclick="toggleDropdown(event, this)" style="color:#0090EA;">
                                     Galeri <i class="fa-solid fa-chevron-down text-[9px] ml-1"></i>
                                 </button>
                                 <div class="dropdown-content">
-                                    <a href="galeri-foto.php">Foto</a>
-                                    <a href="galeri-video.php">Video</a>
+                                    <a href="galeri-foto.php">📸 Foto</a>
+                                    <a href="galeri-video.php">🎥 Video</a>
                                 </div>
                             </div>
                             
@@ -267,7 +283,7 @@
                                     SIM <i class="fa-solid fa-chevron-down text-[9px] ml-1"></i>
                                 </button>
                                 <div class="dropdown-content">
-                                    <a href="https://siak.smpn1buayan.sch.id/">SIAK</a>
+                                    <a href="https://siak.smpn1buayan.sch.id/" target="_blank">💻 SIAK</a>
                                 </div>
                             </div>
                             <a href="download.php" style="color:#333434; font-family: 'Inria Serif', serif;">Download</a>
@@ -332,7 +348,7 @@
                 </div>
                 <div class="menu-overlay" id="menuOverlay" onclick="closeMobileMenu()"></div>
 
-                <!-- ============ HALAMAN GALERI FOTO (judul 4xl) ============ -->
+                <!-- ============ HALAMAN GALERI FOTO ============ -->
                 <div class="bg-[#EAF1F4] pb-14">
 
                     <!-- Judul ukuran 4xl -->
@@ -343,7 +359,7 @@
                         <div class="w-[90%] h-px bg-[#636566]"></div>
                     </div>
 
-                    <!-- Grid Kategori (tidak diubah) -->
+                    <!-- Grid Kategori -->
                     <div class="max-w-5xl mx-auto px-6 mt-10">
                         <div class="gallery-grid">
                             <?php foreach($kategori as $kat): ?>
@@ -365,7 +381,7 @@
 
                 </div>
 
-                <!-- ============ FOOTER (Font Inria Serif) ============ -->
+                <!-- ============ FOOTER ============ -->
                 <div class="self-stretch py-6 gradient-blue-vertical">
                     <div class="flex items-start self-stretch mb-8 ml-4 md:ml-8 mr-4 md:mr-8 footer-content flex-wrap">
                         <div class="flex flex-col shrink-0 items-start gap-2 w-full md:w-auto">
