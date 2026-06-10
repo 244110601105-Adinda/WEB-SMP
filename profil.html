@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-    <title>SMP Negeri 1 Buayan - Rekap Ujian Sekolah</title>
+    <title>SMP Negeri 1 Buayan - Profil Sekolah</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <!-- Google Fonts - Inria Serif (wajib seperti home) -->
+    <!-- Google Fonts - Inria Serif -->
     <link href="https://fonts.googleapis.com/css2?family=Inria+Serif:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
         * {
@@ -23,10 +23,6 @@
             background: linear-gradient(180deg, #0090EA, #005184);
         }
         
-        .gradient-blue {
-            background: linear-gradient(180deg, #0090EA, #005184);
-        }
-        
         .hover-lift {
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
@@ -36,7 +32,29 @@
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
         }
         
-        /* ========== DROPDOWN MENU STYLES (chevron seperti home) ========== */
+        .toast-notification {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: #333434;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            z-index: 1000;
+            animation: slideIn 0.3s ease;
+        }
+        
+        @keyframes slideIn {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        
+        @keyframes slideOut {
+            from { transform: translateX(0); opacity: 1; }
+            to { transform: translateX(100%); opacity: 0; }
+        }
+        
+        /* ========== DROPDOWN MENU STYLES ========== */
         .dropdown {
             position: relative;
             display: inline-block;
@@ -320,13 +338,6 @@
             .footer-content .ml-8 {
                 margin-left: 0 !important;
             }
-            
-            .table-container {
-                overflow-x: auto;
-            }
-            .exam-table {
-                min-width: 500px;
-            }
         }
         
         @media (min-width: 769px) {
@@ -343,49 +354,6 @@
         .fade-in {
             animation: fadeIn 0.5s ease forwards;
         }
-        
-        /* Table styles - disesuaikan dengan gambar (kolom TAHUN PELAJARAN, MATA PELAJARAN, TERTINGGI, TERENDAH, RATA-RATA) */
-        .exam-table th {
-            background-color: #0090EA;
-            color: white;
-            padding: 12px 16px;
-            font-weight: 600;
-            text-align: left;
-            font-family: 'Inria Serif', serif;
-        }
-        
-        .exam-table td {
-            padding: 10px 16px;
-            border-bottom: 1px solid #e5e5e5;
-            color: #333434;
-            font-family: 'Inria Serif', serif;
-        }
-        
-        .exam-table tr:hover {
-            background-color: #f5f5f5;
-        }
-        
-        /* Custom select - tetap menggunakan font Inria Serif */
-        .tahun-select {
-            background-color: white;
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            padding: 8px 32px 8px 16px;
-            font-size: 14px;
-            cursor: pointer;
-            appearance: none;
-            -webkit-appearance: none;
-            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23333434' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'></polyline></svg>");
-            background-repeat: no-repeat;
-            background-position: right 12px center;
-            font-family: 'Inria Serif', serif;
-        }
-        
-        .tahun-select:focus {
-            outline: none;
-            border-color: #0090EA;
-            box-shadow: 0 0 0 2px rgba(0, 144, 234, 0.2);
-        }
     </style>
 </head>
 <body>
@@ -393,7 +361,7 @@
         <div class="flex flex-col items-start self-stretch bg-[#EAF1F4]">
             <div class="self-stretch">
                 <!-- ============================================ -->
-                <!-- HEADER & NAVBAR (Dengan icon chevron seperti home) -->
+                <!-- HEADER & NAVBAR seperti halaman HOME -->
                 <!-- ============================================ -->
                 <div class="bg-white shadow-sm">
                     <div class="desktop-nav">
@@ -413,16 +381,16 @@
                         
                           <!-- Desktop Navigation Menu dengan Dropdown -->
                         <div class="nav-menu-desktop">
-                            <a href="home.php" style="font-family: 'Inria Serif', serif;">Home</a>
+                            <a href="home.html" style="font-family: 'Inria Serif', serif;">Home</a>
                             
                             <div class="dropdown">
                                 <button class="dropbtn" onclick="toggleDropdown(event, this)">
                                     Berita <i class="fa-solid fa-chevron-down text-[9px] ml-1"></i>
                                 </button>
                                 <div class="dropdown-content">
-                                    <a href="berita.php">Berita</a>
-                                    <a href="pengumuman.php">Pengumuman</a>
-                                    <a href="agenda.php">Agenda</a>
+                                    <a href="berita.html">Berita</a>
+                                    <a href="pengumuman.html">Pengumuman</a>
+                                    <a href="agenda.html">Agenda</a>
                                 </div>
                             </div>
                             
@@ -431,13 +399,13 @@
                                     Profil <i class="fa-solid fa-chevron-down text-[9px] ml-1"></i>
                                 </button>
                                 <div class="dropdown-content">
-                                    <a href="profil.php">Profil Sekolah</a>
-                                    <a href="sejarah.php">Sejarah</a>
-                                    <a href="visi-misi.php">Visi & Misi</a>
-                                    <a href="struktur-organisasi.php">Struktur Organisasi</a>
-                                    <a href="tenaga-edukatif.php">Tenaga Edukatif</a>
-                                    <a href="tenaga-non-edukatif.php">Tenaga Non Edukatif</a>
-                                    <a href="sarana-prasarana.php">Sarana Prasarana</a>
+                                    <a href="profil.html">Profil Sekolah</a>
+                                    <a href="sejarah.html">Sejarah</a>
+                                    <a href="visi-misi.html">Visi & Misi</a>
+                                    <a href="struktur-organisasi.html">Struktur Organisasi</a>
+                                    <a href="tenaga-edukatif.html">Tenaga Edukatif</a>
+                                    <a href="tenaga-non-edukatif.html">Tenaga Non Edukatif</a>
+                                    <a href="sarana-prasarana.html">Sarana Prasarana</a>
                                 </div>
                             </div>
                             
@@ -446,23 +414,23 @@
                                     Pendidikan <i class="fa-solid fa-chevron-down text-[9px] ml-1"></i>
                                 </button>
                                 <div class="dropdown-content">
-                                    <a href="struktur-kurikulum.php">Struktur Kurikulum</a>
-                                    <a href="kalender-akademik.php">Kalender Akademik</a>
-                                    <a href="rekap-ujian.php">Rekap Ujian Sekolah</a>
-                                    <a href="ekstrakurikuler.php">Ekstrakurikuler</a>
+                                    <a href="struktur-kurikulum.html">Struktur Kurikulum</a>
+                                    <a href="kalender-akademik.html">Kalender Akademik</a>
+                                    <a href="rekap-ujian.html">Rekap Ujian Sekolah</a>
+                                    <a href="ekstrakurikuler.html">Ekstrakurikuler</a>
                                 </div>
                             </div>
                             
-                            <a href="peserta-didik.php" style="font-family: 'Inria Serif', serif;">Peserta Didik</a>
+                            <a href="peserta-didik.html" style="font-family: 'Inria Serif', serif;">Peserta Didik</a>
                             
                             <div class="dropdown">
                                 <button class="dropbtn" onclick="toggleDropdown(event, this)">
                                     Prestasi <i class="fa-solid fa-chevron-down text-[9px] ml-1"></i>
                                 </button>
                                 <div class="dropdown-content">
-                                    <a href="prestasi-sekolah.php">Prestasi Sekolah</a>
-                                    <a href="prestasi-siswa.php">Prestasi Siswa</a>
-                                    <a href="prestasi-guru.php">Prestasi Guru</a>
+                                    <a href="prestasi-sekolah.html">Prestasi Sekolah</a>
+                                    <a href="prestasi-siswa.html">Prestasi Siswa</a>
+                                    <a href="prestasi-guru.html">Prestasi Guru</a>
                                 </div>
                             </div>
                             
@@ -471,8 +439,8 @@
                                     Alumni <i class="fa-solid fa-chevron-down text-[9px] ml-1"></i>
                                 </button>
                                 <div class="dropdown-content">
-                                    <a href="data-alumni.php">Data Alumni</a>
-                                    <a href="penelusuran-alumni.php">Penelusuran Alumni</a>
+                                    <a href="data-alumni.html">Data Alumni</a>
+                                    <a href="penelusuran-alumni.html">Penelusuran Alumni</a>
                                 </div>
                             </div>
                             
@@ -481,8 +449,8 @@
                                     Galeri <i class="fa-solid fa-chevron-down text-[9px] ml-1"></i>
                                 </button>
                                 <div class="dropdown-content">
-                                    <a href="galeri-foto.php">Foto</a>
-                                    <a href="galeri-video.php">Video</a>
+                                    <a href="galeri-foto.html">Foto</a>
+                                    <a href="galeri-video.html">Video</a>
                                 </div>
                             </div>
                             
@@ -494,7 +462,7 @@
                                     <a href="https://siak.smpn1buayan.sch.id/">SIAK</a>
                                 </div>
                             </div>
-                            <a href="download.php" style="color:#333434; font-family: 'Inria Serif', serif;">Download</a>
+                            <a href="download.html" style="color:#333434; font-family: 'Inria Serif', serif;">Download</a>
                         </div>
                     </div>
                 </div>
@@ -507,64 +475,64 @@
                     <div style="padding: 0 25px;">
                         <div class="menu-title">Menu Navigasi</div>
                     </div>
-                    <a href="home.php">🏠 Home</a>
+                    <a href="home.html">🏠 Home</a>
                     
                     <div class="mobile-dropdown">
                         <button class="mobile-dropbtn" onclick="toggleMobileDropdown(this)">📰 Berita</button>
                         <div class="mobile-dropdown-content">
-                            <a href="berita.php">Berita</a>
-                            <a href="pengumuman.php">Pengumuman</a>
-                            <a href="agenda.php">Agenda</a>
+                            <a href="berita.html">Berita</a>
+                            <a href="pengumuman.html">Pengumuman</a>
+                            <a href="agenda.html">Agenda</a>
                         </div>
                     </div>
                     
                     <div class="mobile-dropdown">
                         <button class="mobile-dropbtn" onclick="toggleMobileDropdown(this)">🏫 Profil</button>
                         <div class="mobile-dropdown-content">
-                            <a href="profil.php">Profil Sekolah</a>
-                            <a href="sejarah.php">Sejarah</a>
-                            <a href="visi-misi.php">Visi & Misi</a>
-                            <a href="struktur-organisasi.php">Struktur Organisasi</a>
-                            <a href="tenaga-edukatif.php">Tenaga Edukatif</a>
-                            <a href="tenaga-non-edukatif.php">Tenaga Non Edukatif</a>
-                            <a href="sarana-prasarana.php">Sarana Prasarana</a>
+                            <a href="profil.html">Profil Sekolah</a>
+                            <a href="sejarah.html">Sejarah</a>
+                            <a href="visi-misi.html">Visi & Misi</a>
+                            <a href="struktur-organisasi.html">Struktur Organisasi</a>
+                            <a href="tenaga-edukatif.html">Tenaga Edukatif</a>
+                            <a href="tenaga-non-edukatif.html">Tenaga Non Edukatif</a>
+                            <a href="sarana-prasarana.html">Sarana Prasarana</a>
                         </div>
                     </div>
                     
                     <div class="mobile-dropdown">
                         <button class="mobile-dropbtn" onclick="toggleMobileDropdown(this)">📚 Pendidikan</button>
                         <div class="mobile-dropdown-content">
-                            <a href="struktur-kurikulum.php">Struktur Kurikulum</a>
-                            <a href="kalender-akademik.php">Kalender Akademik</a>
-                            <a href="rekap-ujian.php">Rekap Ujian Sekolah</a>
-                            <a href="ekstrakurikuler.php">Ekstrakurikuler</a>
+                            <a href="struktur-kurikulum.html">Struktur Kurikulum</a>
+                            <a href="kalender-akademik.html">Kalender Akademik</a>
+                            <a href="rekap-ujian.html">Rekap Ujian Sekolah</a>
+                            <a href="ekstrakurikuler.html">Ekstrakurikuler</a>
                         </div>
                     </div>
                     
-                    <a href="peserta-didik.php">👨‍🎓 Peserta Didik</a>
+                    <a href="peserta-didik.html">👨‍🎓 Peserta Didik</a>
                     
                     <div class="mobile-dropdown">
                         <button class="mobile-dropbtn" onclick="toggleMobileDropdown(this)">🏆 Prestasi</button>
                         <div class="mobile-dropdown-content">
-                            <a href="prestasi-sekolah.php">Prestasi Sekolah</a>
-                            <a href="prestasi-siswa.php">Prestasi Siswa</a>
-                            <a href="prestasi-guru.php">Prestasi Guru</a>
+                            <a href="prestasi-sekolah.html">Prestasi Sekolah</a>
+                            <a href="prestasi-siswa.html">Prestasi Siswa</a>
+                            <a href="prestasi-guru.html">Prestasi Guru</a>
                         </div>
                     </div>
                     
                     <div class="mobile-dropdown">
                         <button class="mobile-dropbtn" onclick="toggleMobileDropdown(this)">👥 Alumni</button>
                         <div class="mobile-dropdown-content">
-                            <a href="data-alumni.php">Data Alumni</a>
-                            <a href="penelusuran-alumni.php">Penelusuran Alumni</a>
+                            <a href="data-alumni.html">Data Alumni</a>
+                            <a href="penelusuran-alumni.html">Penelusuran Alumni</a>
                         </div>
                     </div>
                     
                     <div class="mobile-dropdown">
                         <button class="mobile-dropbtn" onclick="toggleMobileDropdown(this)">🖼️ Galeri</button>
                         <div class="mobile-dropdown-content">
-                            <a href="galeri-foto.php">Foto</a>
-                            <a href="galeri-video.php">Video</a>
+                            <a href="galeri-foto.html">Foto</a>
+                            <a href="galeri-video.html">Video</a>
                         </div>
                     </div>
                     
@@ -575,19 +543,20 @@
                         </div>
                     </div>
                     
-                    <a href="download.php" class="block px-6 py-3 text-sm font-medium cursor-pointer hover:text-blue-600 transition border-b border-gray-100" style="font-family: 'Inria Serif', serif;">⬇️ Download</a>
+                    <a href="download.html" class="block px-6 py-3 text-sm font-medium cursor-pointer hover:text-blue-600 transition border-b border-gray-100">⬇️ Download</a>
                 </div>
                 
                 <div class="menu-overlay" id="menuOverlay" onclick="closeMobileMenu()"></div>
 
+                
                 <!-- ============================================ -->
-                <!-- HALAMAN REKAP UJIAN SEKOLAH (Font Inria Serif, judul 4xl, tabel sesuai gambar dengan isi kosong) -->
+                <!-- HALAMAN PROFIL SEKOLAH -->
                 <!-- ============================================ -->
                 <div class="bg-[#EAF1F4] pb-12">
                     
-                    <!-- Judul REKAP UJIAN SEKOLAH ukuran 4xl (text-4xl) -->
+                    <!-- Judul PROFIL SEKOLAH (text-4xl) -->
                     <div class="text-center pt-8 pb-4">
-                        <h1 class="text-[#333434] text-4xl font-bold tracking-wider" style="font-family: 'Inria Serif', serif;">REKAP UJIAN SEKOLAH</h1>
+                        <h1 class="text-[#333434] text-4xl font-bold tracking-wider" style="font-family: 'Inria Serif', serif;">PROFIL SEKOLAH</h1>
                     </div>
                     
                     <!-- Garis pemisah -->
@@ -595,54 +564,70 @@
                         <div class="w-[90%] h-px bg-[#636566]"></div>
                     </div>
                     
-                    <!-- Konten -->
+                    <!-- Konten Profil -->
                     <div class="max-w-5xl mx-auto px-4 mt-10">
                         
-                        <!-- Filter Tahun Pelajaran dengan FORM GET (tetap ada untuk konsistensi, tapi tidak mengubah isi tabel) -->
-                        <div class="flex justify-end mb-6">
-                            <form method="GET" action="" class="inline-block">
-                                <label class="text-[#636566] text-sm mr-2" style="font-family: 'Inria Serif', serif;">Tahun Pelajaran:</label>
-                                <select name="tahun" class="tahun-select" onchange="this.form.submit()">
-                                    <option value="2023/2024">2023/2024</option>
-                                    <option value="2024/2025">2024/2025</option>
-                                    <option value="2025/2026" selected>2025/2026</option>
-                                </select>
-                            </form>
+                        <!-- Gambar Sekolah (agak full, masih ada jarak dari tepi) -->
+                        <div class="mb-8 rounded-2xl overflow-hidden shadow-lg mx-0 md:mx-4">
+                            <img src="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/962d68b2-2f7e-4a45-b0d8-af2e6430e429" 
+                                 alt="Gambar Sekolah SMP Negeri 1 Buayan"
+                                 class="w-full h-80 md:h-[450px] object-cover hover:scale-105 transition duration-500">
                         </div>
                         
-                        <!-- Tabel Rekap Ujian dengan kolom sesuai gambar: TAHUN PELAJARAN | MATA PELAJARAN | TERTINGGI | TERENDAH | RATA-RATA -->
-                        <!-- SEMUA ISI TABEL DIKOSONGKAN (hanya garis pemisah) -->
-                        <div class="table-container bg-white rounded-2xl shadow-lg overflow-hidden">
-                            <table class="exam-table w-full">
-                                <thead>
-                                    <tr>
-                                        <th class="w-1/4" style="font-family: 'Inria Serif', serif;">TAHUN PELAJARAN</th>
-                                        <th class="w-2/5" style="font-family: 'Inria Serif', serif;">MATA PELAJARAN</th>
-                                        <th class="w-1/5 text-center" style="font-family: 'Inria Serif', serif;">TERTINGGI</th>
-                                        <th class="w-1/5 text-center" style="font-family: 'Inria Serif', serif;">TERENDAH</th>
-                                        <th class="w-1/5 text-center" style="font-family: 'Inria Serif', serif;">RATA-RATA</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <!-- Baris kosong (tidak ada data) sesuai permintaan -->
-                                    <tr>
-                                        <td class="text-center text-[#636566] py-6" colspan="5" style="font-family: 'Inria Serif', serif;">
-                                            <i class="fa-regular fa-folder-open text-2xl mb-2 block"></i>
-                                            Belum tersedia data rekap ujian
-                                        </td>
-                                    </tr>
-                                    <!-- Contoh baris kosong seperti format di gambar, namun tetap kosong -->
-                                </tbody>
-                                <!-- Tidak ada foot/total karena data kosong -->
-                             </table>
+                        <!-- Card Informasi Sekolah (ukuran sama dengan gambar) -->
+                        <div class="bg-white rounded-2xl shadow-lg overflow-hidden mx-0 md:mx-4">
+                            <div class="bg-gradient-to-r from-[#0090EA] to-[#005184] px-6 py-4">
+                                <h2 class="text-white text-xl font-bold flex items-center gap-2" style="font-family: 'Inria Serif', serif;">
+                                    <span>📋</span> Data Sekolah SMP Negeri 1 Buayan
+                                </h2>
+                            </div>
+                            <div class="p-6">
+                                <div class="space-y-4">
+                                    <div class="flex flex-wrap border-b border-gray-100 pb-3">
+                                        <div class="w-44 text-[#636566] text-sm font-semibold" style="font-family: 'Inria Serif', serif;">Nama Sekolah</div>
+                                        <div class="flex-1 text-[#333434] text-sm" style="font-family: 'Inria Serif', serif;">: SMP Negeri 1 Buayan</div>
+                                    </div>
+                                    <div class="flex flex-wrap border-b border-gray-100 pb-3">
+                                        <div class="w-44 text-[#636566] text-sm font-semibold" style="font-family: 'Inria Serif', serif;">Alamat</div>
+                                        <div class="flex-1 text-[#333434] text-sm" style="font-family: 'Inria Serif', serif;">: Jl. Karangbolong, Kec. Buayan, Kab. Kebumen</div>
+                                    </div>
+                                    <div class="flex flex-wrap border-b border-gray-100 pb-3">
+                                        <div class="w-44 text-[#636566] text-sm font-semibold" style="font-family: 'Inria Serif', serif;">Email</div>
+                                        <div class="flex-1 text-[#333434] text-sm" style="font-family: 'Inria Serif', serif;">: smpnbuayan01@gmail.com</div>
+                                    </div>
+                                    <div class="flex flex-wrap border-b border-gray-100 pb-3">
+                                        <div class="w-44 text-[#636566] text-sm font-semibold" style="font-family: 'Inria Serif', serif;">Telp</div>
+                                        <div class="flex-1 text-[#333434] text-sm" style="font-family: 'Inria Serif', serif;">: (0287) 4760162</div>
+                                    </div>
+                                    <div class="flex flex-wrap border-b border-gray-100 pb-3">
+                                        <div class="w-44 text-[#636566] text-sm font-semibold" style="font-family: 'Inria Serif', serif;">Whatsapp</div>
+                                        <div class="flex-1 text-[#333434] text-sm" style="font-family: 'Inria Serif', serif;">: 088238063441</div>
+                                    </div>
+                                    <div class="flex flex-wrap border-b border-gray-100 pb-3">
+                                        <div class="w-44 text-[#636566] text-sm font-semibold" style="font-family: 'Inria Serif', serif;">Akreditasi</div>
+                                        <div class="flex-1 text-[#333434] text-sm" style="font-family: 'Inria Serif', serif;">: A</div>
+                                    </div>
+                                    <div class="flex flex-wrap border-b border-gray-100 pb-3">
+                                        <div class="w-44 text-[#636566] text-sm font-semibold" style="font-family: 'Inria Serif', serif;">Kurikulum</div>
+                                        <div class="flex-1 text-[#333434] text-sm" style="font-family: 'Inria Serif', serif;">: Merdeka</div>
+                                    </div>
+                                    <div class="flex flex-wrap border-b border-gray-100 pb-3">
+                                        <div class="w-44 text-[#636566] text-sm font-semibold" style="font-family: 'Inria Serif', serif;">Kepala Sekolah</div>
+                                        <div class="flex-1 text-[#333434] text-sm" style="font-family: 'Inria Serif', serif;">: Hasan Bukhori, S.Pd</div>
+                                    </div>
+                                    <div class="flex flex-wrap">
+                                        <div class="w-44 text-[#636566] text-sm font-semibold" style="font-family: 'Inria Serif', serif;">Operator</div>
+                                        <div class="flex-1 text-[#333434] text-sm" style="font-family: 'Inria Serif', serif;">: Irwan Slamet Warsito, S.Si, M.Pd</div>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         
                     </div>
-                    
                 </div>
                 
                 <!-- ============================================ -->
-                <!-- FOOTER (Font Inria Serif, tidak diubah) -->
+                <!-- FOOTER -->
                 <!-- ============================================ -->
                 <div class="self-stretch py-6 gradient-blue-vertical">
                     <div class="flex items-start self-stretch mb-8 ml-4 md:ml-8 mr-4 md:mr-8 footer-content flex-wrap">
@@ -689,10 +674,9 @@
                         <div class="flex flex-col shrink-0 items-start mt-4 md:mt-0 gap-2 w-full md:w-auto">
                             <span class="text-white text-sm font-bold" style="font-family: 'Inria Serif', serif;">Media Sosial</span>
                             <div class="flex items-center gap-2">
-                                <button onclick="showToast('Membuka Facebook')" class="bg-white/20 px-3 py-1 rounded-lg text-white text-xs hover:bg-white/30 transition" style="font-family: 'Inria Serif', serif;">Facebook</button>
-                                <button onclick="showToast('Membuka Instagram')" class="bg-white/20 px-3 py-1 rounded-lg text-white text-xs hover:bg-white/30 transition" style="font-family: 'Inria Serif', serif;">Instagram</button>
-                                <button onclick="showToast('Membuka Twitter')" class="bg-white/20 px-3 py-1 rounded-lg text-white text-xs hover:bg-white/30 transition" style="font-family: 'Inria Serif', serif;">Twitter</button>
-                                <button onclick="showToast('Membuka YouTube')" class="bg-white/20 px-3 py-1 rounded-lg text-white text-xs hover:bg-white/30 transition" style="font-family: 'Inria Serif', serif;">YouTube</button>
+                                <button onclick="showToast('Facebook')" class="bg-white/20 px-3 py-1 rounded-lg text-white text-xs hover:bg-white/30" style="font-family: 'Inria Serif', serif;">Facebook</button>
+                                <button onclick="showToast('Instagram')" class="bg-white/20 px-3 py-1 rounded-lg text-white text-xs hover:bg-white/30" style="font-family: 'Inria Serif', serif;">Instagram</button>
+                                <button onclick="showToast('Twitter')" class="bg-white/20 px-3 py-1 rounded-lg text-white text-xs hover:bg-white/30" style="font-family: 'Inria Serif', serif;">Twitter</button>
                             </div>
                         </div>
                     </div>
@@ -700,7 +684,7 @@
                     <div class="self-stretch bg-[#FFFFFFCC] h-px my-4 mx-4 md:mx-5"></div>
                     
                     <div class="flex flex-col items-center self-stretch">
-                        <span class="text-white text-xs font-bold text-center px-4" style="font-family: 'Inria Serif', serif;">Copyright © 2021 - <?= date('Y') ?> SMP NEGERI 1 BUAYAN</span>
+                        <span class="text-white text-xs font-bold text-center px-4" style="font-family: 'Inria Serif', serif;">Copyright © 2021 - 2025 SMP NEGERI 1 BUAYAN</span>
                     </div>
                 </div>
             </div>
@@ -716,7 +700,8 @@
             toast.innerHTML = message;
             document.body.appendChild(toast);
             setTimeout(() => {
-                if(toast) toast.remove();
+                toast.style.animation = 'slideOut 0.3s ease';
+                setTimeout(() => toast.remove(), 300);
             }, 2000);
         }
         

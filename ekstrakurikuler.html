@@ -3,10 +3,10 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-    <title>SMP Negeri 1 Buayan - Tenaga Non Edukatif</title>
+    <title>SMP Negeri 1 Buayan - Ekstrakurikuler</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <!-- Google Fonts - Inria Serif -->
+    <!-- Google Fonts - Inria Serif (wajib seperti home) -->
     <link href="https://fonts.googleapis.com/css2?family=Inria+Serif:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
         * {
@@ -36,7 +36,7 @@
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
         }
         
-        /* ========== DROPDOWN MENU STYLES ========== */
+        /* ========== DROPDOWN MENU STYLES (chevron seperti home) ========== */
         .dropdown {
             position: relative;
             display: inline-block;
@@ -321,11 +321,14 @@
                 margin-left: 0 !important;
             }
             
-            .table-container {
-                overflow-x: auto;
+            .eskul-grid {
+                grid-template-columns: repeat(2, 1fr) !important;
             }
-            .staff-table {
-                min-width: 600px;
+        }
+        
+        @media (max-width: 480px) {
+            .eskul-grid {
+                grid-template-columns: 1fr !important;
             }
         }
         
@@ -344,7 +347,28 @@
             animation: fadeIn 0.5s ease forwards;
         }
         
-        /* Toast notification */
+        /* Card ekstrakurikuler styles */
+        .eskul-card {
+            transition: all 0.3s ease;
+            overflow: hidden;
+        }
+        
+        .eskul-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.02);
+        }
+        
+        .eskul-image {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .eskul-card:hover .eskul-image {
+            transform: scale(1.05);
+        }
+        
         .toast-notification {
             position: fixed;
             bottom: 20px;
@@ -355,78 +379,22 @@
             border-radius: 8px;
             z-index: 1000;
             animation: slideIn 0.3s ease;
+            font-family: 'Inria Serif', serif;
         }
         
         @keyframes slideIn {
             from { transform: translateX(100%); opacity: 0; }
             to { transform: translateX(0); opacity: 1; }
         }
-        
-        @keyframes slideOut {
-            from { transform: translateX(0); opacity: 1; }
-            to { transform: translateX(100%); opacity: 0; }
-        }
-        
-        /* Table styles */
-        .staff-table th {
-            background-color: #0090EA;
-            color: white;
-            padding: 12px 16px;
-            font-weight: 600;
-            text-align: left;
-            font-family: 'Inria Serif', serif;
-        }
-        
-        .staff-table td {
-            padding: 10px 16px;
-            border-bottom: 1px solid #e5e5e5;
-            color: #333434;
-            font-family: 'Inria Serif', serif;
-        }
-        
-        .staff-table tr:hover {
-            background-color: #f5f5f5;
-        }
-        
-        /* Search input */
-        .search-input {
-            border: 1px solid #ddd;
-            border-radius: 8px;
-            padding: 8px 16px;
-            width: 250px;
-            font-size: 14px;
-            transition: all 0.3s ease;
-            font-family: 'Inria Serif', serif;
-        }
-        
-        .search-input:focus {
-            outline: none;
-            border-color: #0090EA;
-            box-shadow: 0 0 0 2px rgba(0, 144, 234, 0.2);
-        }
     </style>
 </head>
 <body>
-    <?php
-    // DATA TENAGA NON EDUKATIF
-    $tenagaNonEdukatif = [
-        ['nama' => 'Slamet Riyadi', 'nip' => '197501012005011001', 'nuptk' => '1234567890123456', 'alamat' => 'Karanggayam, Kebumen'],
-        ['nama' => 'Siti Fatimah', 'nip' => '197802152006012002', 'nuptk' => '2345678901234567', 'alamat' => 'Kuwarasan, Kebumen'],
-        ['nama' => 'Ahmad Budiman', 'nip' => '198003202007011003', 'nuptk' => '3456789012345678', 'alamat' => 'Gombong, Kebumen'],
-        ['nama' => 'Dewi Lestari', 'nip' => '198105252008012004', 'nuptk' => '4567890123456789', 'alamat' => 'Buayan, Kebumen'],
-        ['nama' => 'Eko Prasetyo', 'nip' => '198307152009011005', 'nuptk' => '5678901234567890', 'alamat' => 'Sempor, Kebumen'],
-        ['nama' => 'Rina Yulianti', 'nip' => '198412202010012006', 'nuptk' => '6789012345678901', 'alamat' => 'Adimulyo, Kebumen'],
-        ['nama' => 'Bambang Supriyadi', 'nip' => '198602102011011007', 'nuptk' => '7890123456789012', 'alamat' => 'Puring, Kebumen'],
-        ['nama' => 'Nur Hidayati', 'nip' => '198708152012012008', 'nuptk' => '8901234567890123', 'alamat' => 'Prembun, Kebumen'],
-        ['nama' => 'Joko Susilo', 'nip' => '198910202013011009', 'nuptk' => '9012345678901234', 'alamat' => 'Kebumen Kota'],
-    ];
-    ?>
     
     <div class="flex flex-col bg-white">
         <div class="flex flex-col items-start self-stretch bg-[#EAF1F4]">
             <div class="self-stretch">
                 <!-- ============================================ -->
-                <!-- HEADER & NAVBAR -->
+                <!-- HEADER & NAVBAR (Dengan icon chevron seperti home) -->
                 <!-- ============================================ -->
                 <div class="bg-white shadow-sm">
                     <div class="desktop-nav">
@@ -444,18 +412,18 @@
                             <i class="fa-solid fa-bars"></i>
                         </button>
                         
-                           <!-- Desktop Navigation Menu dengan Dropdown -->
+                         <!-- Desktop Navigation Menu dengan Dropdown -->
                         <div class="nav-menu-desktop">
-                            <a href="home.php" style="font-family: 'Inria Serif', serif;">Home</a>
+                            <a href="home.html" style="font-family: 'Inria Serif', serif;">Home</a>
                             
                             <div class="dropdown">
                                 <button class="dropbtn" onclick="toggleDropdown(event, this)">
                                     Berita <i class="fa-solid fa-chevron-down text-[9px] ml-1"></i>
                                 </button>
                                 <div class="dropdown-content">
-                                    <a href="berita.php">Berita</a>
-                                    <a href="pengumuman.php">Pengumuman</a>
-                                    <a href="agenda.php">Agenda</a>
+                                    <a href="berita.html">Berita</a>
+                                    <a href="pengumuman.html">Pengumuman</a>
+                                    <a href="agenda.html">Agenda</a>
                                 </div>
                             </div>
                             
@@ -464,13 +432,13 @@
                                     Profil <i class="fa-solid fa-chevron-down text-[9px] ml-1"></i>
                                 </button>
                                 <div class="dropdown-content">
-                                    <a href="profil.php">Profil Sekolah</a>
-                                    <a href="sejarah.php">Sejarah</a>
-                                    <a href="visi-misi.php">Visi & Misi</a>
-                                    <a href="struktur-organisasi.php">Struktur Organisasi</a>
-                                    <a href="tenaga-edukatif.php">Tenaga Edukatif</a>
-                                    <a href="tenaga-non-edukatif.php">Tenaga Non Edukatif</a>
-                                    <a href="sarana-prasarana.php">Sarana Prasarana</a>
+                                    <a href="profil.html">Profil Sekolah</a>
+                                    <a href="sejarah.html">Sejarah</a>
+                                    <a href="visi-misi.html">Visi & Misi</a>
+                                    <a href="struktur-organisasi.html">Struktur Organisasi</a>
+                                    <a href="tenaga-edukatif.html">Tenaga Edukatif</a>
+                                    <a href="tenaga-non-edukatif.html">Tenaga Non Edukatif</a>
+                                    <a href="sarana-prasarana.html">Sarana Prasarana</a>
                                 </div>
                             </div>
                             
@@ -479,23 +447,23 @@
                                     Pendidikan <i class="fa-solid fa-chevron-down text-[9px] ml-1"></i>
                                 </button>
                                 <div class="dropdown-content">
-                                    <a href="struktur-kurikulum.php">Struktur Kurikulum</a>
-                                    <a href="kalender-akademik.php">Kalender Akademik</a>
-                                    <a href="rekap-ujian.php">Rekap Ujian Sekolah</a>
-                                    <a href="ekstrakurikuler.php">Ekstrakurikuler</a>
+                                    <a href="struktur-kurikulum.html">Struktur Kurikulum</a>
+                                    <a href="kalender-akademik.html">Kalender Akademik</a>
+                                    <a href="rekap-ujian.html">Rekap Ujian Sekolah</a>
+                                    <a href="ekstrakurikuler.html">Ekstrakurikuler</a>
                                 </div>
                             </div>
                             
-                            <a href="peserta-didik.php" style="font-family: 'Inria Serif', serif;">Peserta Didik</a>
+                            <a href="peserta-didik.html" style="font-family: 'Inria Serif', serif;">Peserta Didik</a>
                             
                             <div class="dropdown">
                                 <button class="dropbtn" onclick="toggleDropdown(event, this)">
                                     Prestasi <i class="fa-solid fa-chevron-down text-[9px] ml-1"></i>
                                 </button>
                                 <div class="dropdown-content">
-                                    <a href="prestasi-sekolah.php">Prestasi Sekolah</a>
-                                    <a href="prestasi-siswa.php">Prestasi Siswa</a>
-                                    <a href="prestasi-guru.php">Prestasi Guru</a>
+                                    <a href="prestasi-sekolah.html">Prestasi Sekolah</a>
+                                    <a href="prestasi-siswa.html">Prestasi Siswa</a>
+                                    <a href="prestasi-guru.html">Prestasi Guru</a>
                                 </div>
                             </div>
                             
@@ -504,8 +472,8 @@
                                     Alumni <i class="fa-solid fa-chevron-down text-[9px] ml-1"></i>
                                 </button>
                                 <div class="dropdown-content">
-                                    <a href="data-alumni.php">Data Alumni</a>
-                                    <a href="penelusuran-alumni.php">Penelusuran Alumni</a>
+                                    <a href="data-alumni.html">Data Alumni</a>
+                                    <a href="penelusuran-alumni.html">Penelusuran Alumni</a>
                                 </div>
                             </div>
                             
@@ -514,8 +482,8 @@
                                     Galeri <i class="fa-solid fa-chevron-down text-[9px] ml-1"></i>
                                 </button>
                                 <div class="dropdown-content">
-                                    <a href="galeri-foto.php">Foto</a>
-                                    <a href="galeri-video.php">Video</a>
+                                    <a href="galeri-foto.html">Foto</a>
+                                    <a href="galeri-video.html">Video</a>
                                 </div>
                             </div>
                             
@@ -527,7 +495,7 @@
                                     <a href="https://siak.smpn1buayan.sch.id/">SIAK</a>
                                 </div>
                             </div>
-                            <a href="download.php" style="color:#333434; font-family: 'Inria Serif', serif;">Download</a>
+                            <a href="download.html" style="color:#333434; font-family: 'Inria Serif', serif;">Download</a>
                         </div>
                     </div>
                 </div>
@@ -540,64 +508,64 @@
                     <div style="padding: 0 25px;">
                         <div class="menu-title">Menu Navigasi</div>
                     </div>
-                    <a href="home.php">🏠 Home</a>
+                    <a href="home.html">🏠 Home</a>
                     
                     <div class="mobile-dropdown">
                         <button class="mobile-dropbtn" onclick="toggleMobileDropdown(this)">📰 Berita</button>
                         <div class="mobile-dropdown-content">
-                            <a href="berita.php">Berita</a>
-                            <a href="pengumuman.php">Pengumuman</a>
-                            <a href="agenda.php">Agenda</a>
+                            <a href="berita.html">Berita</a>
+                            <a href="pengumuman.html">Pengumuman</a>
+                            <a href="agenda.html">Agenda</a>
                         </div>
                     </div>
                     
                     <div class="mobile-dropdown">
                         <button class="mobile-dropbtn" onclick="toggleMobileDropdown(this)">🏫 Profil</button>
                         <div class="mobile-dropdown-content">
-                            <a href="profil.php">Profil Sekolah</a>
-                            <a href="sejarah.php">Sejarah</a>
-                            <a href="visi-misi.php">Visi & Misi</a>
-                            <a href="struktur-organisasi.php">Struktur Organisasi</a>
-                            <a href="tenaga-edukatif.php">Tenaga Edukatif</a>
-                            <a href="tenaga-non-edukatif.php">Tenaga Non Edukatif</a>
-                            <a href="sarana-prasarana.php">Sarana Prasarana</a>
+                            <a href="profil.html">Profil Sekolah</a>
+                            <a href="sejarah.html">Sejarah</a>
+                            <a href="visi-misi.html">Visi & Misi</a>
+                            <a href="struktur-organisasi.html">Struktur Organisasi</a>
+                            <a href="tenaga-edukatif.html">Tenaga Edukatif</a>
+                            <a href="tenaga-non-edukatif.html">Tenaga Non Edukatif</a>
+                            <a href="sarana-prasarana.html">Sarana Prasarana</a>
                         </div>
                     </div>
                     
                     <div class="mobile-dropdown">
                         <button class="mobile-dropbtn" onclick="toggleMobileDropdown(this)">📚 Pendidikan</button>
                         <div class="mobile-dropdown-content">
-                            <a href="struktur-kurikulum.php">Struktur Kurikulum</a>
-                            <a href="kalender-akademik.php">Kalender Akademik</a>
-                            <a href="rekap-ujian.php">Rekap Ujian Sekolah</a>
-                            <a href="ekstrakurikuler.php">Ekstrakurikuler</a>
+                            <a href="struktur-kurikulum.html">Struktur Kurikulum</a>
+                            <a href="kalender-akademik.html">Kalender Akademik</a>
+                            <a href="rekap-ujian.html">Rekap Ujian Sekolah</a>
+                            <a href="ekstrakurikuler.html">Ekstrakurikuler</a>
                         </div>
                     </div>
                     
-                    <a href="peserta-didik.php">👨‍🎓 Peserta Didik</a>
+                    <a href="peserta-didik.html">👨‍🎓 Peserta Didik</a>
                     
                     <div class="mobile-dropdown">
                         <button class="mobile-dropbtn" onclick="toggleMobileDropdown(this)">🏆 Prestasi</button>
                         <div class="mobile-dropdown-content">
-                            <a href="prestasi-sekolah.php">Prestasi Sekolah</a>
-                            <a href="prestasi-siswa.php">Prestasi Siswa</a>
-                            <a href="prestasi-guru.php">Prestasi Guru</a>
+                            <a href="prestasi-sekolah.html">Prestasi Sekolah</a>
+                            <a href="prestasi-siswa.html">Prestasi Siswa</a>
+                            <a href="prestasi-guru.html">Prestasi Guru</a>
                         </div>
                     </div>
                     
                     <div class="mobile-dropdown">
                         <button class="mobile-dropbtn" onclick="toggleMobileDropdown(this)">👥 Alumni</button>
                         <div class="mobile-dropdown-content">
-                            <a href="data-alumni.php">Data Alumni</a>
-                            <a href="penelusuran-alumni.php">Penelusuran Alumni</a>
+                            <a href="data-alumni.html">Data Alumni</a>
+                            <a href="penelusuran-alumni.html">Penelusuran Alumni</a>
                         </div>
                     </div>
                     
                     <div class="mobile-dropdown">
                         <button class="mobile-dropbtn" onclick="toggleMobileDropdown(this)">🖼️ Galeri</button>
                         <div class="mobile-dropdown-content">
-                            <a href="galeri-foto.php">Foto</a>
-                            <a href="galeri-video.php">Video</a>
+                            <a href="galeri-foto.html">Foto</a>
+                            <a href="galeri-video.html">Video</a>
                         </div>
                     </div>
                     
@@ -608,20 +576,19 @@
                         </div>
                     </div>
                     
-                    <a href="download.php" class="block px-6 py-3 text-sm font-medium cursor-pointer hover:text-blue-600 transition border-b border-gray-100">⬇️ Download</a>
+                    <a href="download.html" class="block px-6 py-3 text-sm font-medium cursor-pointer hover:text-blue-600 transition border-b border-gray-100" style="font-family: 'Inria Serif', serif;">⬇️ Download</a>
                 </div>
                 
                 <div class="menu-overlay" id="menuOverlay" onclick="closeMobileMenu()"></div>
 
-                
                 <!-- ============================================ -->
-                <!-- HALAMAN TENAGA NON EDUKATIF -->
+                <!-- HALAMAN EKSTRAKURIKULER (Font Inria Serif, judul 4xl) -->
                 <!-- ============================================ -->
                 <div class="bg-[#EAF1F4] pb-12">
                     
-                    <!-- Judul TENAGA NON EDUKATIF (text-4xl) -->
+                    <!-- Judul EKSTRAKURIKULER ukuran 4xl (text-4xl) -->
                     <div class="text-center pt-8 pb-4">
-                        <h1 class="text-[#333434] text-4xl font-bold tracking-wider" style="font-family: 'Inria Serif', serif;">TENAGA NON EDUKATIF</h1>
+                        <h1 class="text-[#333434] text-4xl font-bold tracking-wider" style="font-family: 'Inria Serif', serif;">EKSTRAKURIKULER</h1>
                     </div>
                     
                     <!-- Garis pemisah -->
@@ -629,52 +596,92 @@
                         <div class="w-[90%] h-px bg-[#636566]"></div>
                     </div>
                     
-                    <!-- Tabel Tenaga Non Edukatif -->
+                    <!-- Daftar Ekstrakurikuler dalam Grid (tidak ada perubahan) -->
                     <div class="max-w-6xl mx-auto px-4 mt-10">
-                        <!-- Search Box -->
-                        <div class="flex justify-end mb-6">
-                            <div class="relative">
-                                <i class="fa-solid fa-search absolute left-3 top-1/2 transform -translate-y-1/2 text-[#636566] text-sm"></i>
-                                <input type="text" id="searchInput" class="search-input pl-9" placeholder="Cari nama, NIP, atau NUPTK..." onkeyup="searchTable()">
+                        <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 eskul-grid">
+                            <!-- TARI -->
+                            <div class="bg-white rounded-xl shadow-md overflow-hidden eskul-card cursor-pointer">
+                                <img src="https://www.smpn1buayan.sch.id/assets/img/foto/84f4388bb794fb727d154224c4f4e836.jpeg" 
+                                     alt="TARI"
+                                     class="eskul-image"
+                                     onerror="this.src='https://placehold.co/500x300/0090EA/white?text=TARI'">
+                                <div class="p-4 text-center">
+                                    <h3 class="text-[#333434] font-bold text-sm md:text-base" style="font-family: 'Inria Serif', serif;">TARI</h3>
+                                </div>
                             </div>
-                        </div>
-                        
-                        <!-- Tabel -->
-                        <div class="table-container bg-white rounded-2xl shadow-lg overflow-hidden">
-                            <table class="staff-table w-full">
-                                <thead>
-                                    <tr>
-                                        <th class="w-12">No</th>
-                                        <th>NAMA</th>
-                                        <th>NIP</th>
-                                        <th>NUPTK</th>
-                                        <th>ALAMAT</th>
-                                    </tr>
-                                </thead>
-                                <tbody id="tableBody">
-                                    <?php foreach($tenagaNonEdukatif as $index => $staff): ?>
-                                    <tr class="staff-row">
-                                        <td class="text-center"><?= $index + 1 ?></td>
-                                        <td class="font-medium"><?= htmlspecialchars($staff['nama']) ?></td>
-                                        <td><?= htmlspecialchars($staff['nip']) ?></td>
-                                        <td><?= htmlspecialchars($staff['nuptk']) ?></td>
-                                        <td><?= htmlspecialchars($staff['alamat'] ?: '-') ?></td>
-                                    </tr>
-                                    <?php endforeach; ?>
-                                </tbody>
-                            </table>
-                        </div>
-                        
-                        <!-- Keterangan jumlah data -->
-                        <div class="mt-4 text-right text-[#636566] text-sm" style="font-family: 'Inria Serif', serif;">
-                            Total Tenaga Non Edukatif: <span id="totalCount"><?= count($tenagaNonEdukatif) ?></span> orang
+                            
+                            <!-- PMR -->
+                            <div class="bg-white rounded-xl shadow-md overflow-hidden eskul-card cursor-pointer">
+                                <img src="assets/pmr.jpeg" 
+                                     alt="PMR"
+                                     class="eskul-image"
+                                     onerror="this.src='https://placehold.co/500x300/0090EA/white?text=PMR'">
+                                <div class="p-4 text-center">
+                                    <h3 class="text-[#333434] font-bold text-sm md:text-base" style="font-family: 'Inria Serif', serif;">PMR</h3>
+                                </div>
+                            </div>
+                            
+                            <!-- PRAMUKA -->
+                            <div class="bg-white rounded-xl shadow-md overflow-hidden eskul-card cursor-pointer">
+                                <img src="https://www.smpn1buayan.sch.id/assets/img/foto/51cdc67f3d7cb5f960f19730311d25e2.jpeg" 
+                                     alt="PRAMUKA"
+                                     class="eskul-image"
+                                     onerror="this.src='https://placehold.co/500x300/0090EA/white?text=PRAMUKA'">
+                                <div class="p-4 text-center">
+                                    <h3 class="text-[#333434] font-bold text-sm md:text-base" style="font-family: 'Inria Serif', serif;">PRAMUKA</h3>
+                                </div>
+                            </div>
+                            
+                            <!-- OLAHRAGA -->
+                            <div class="bg-white rounded-xl shadow-md overflow-hidden eskul-card cursor-pointer">
+                                <img src="https://www.smpn1buayan.sch.id/assets/img/foto/04028de3efd05360e630160c3bbb837a.jpg" 
+                                     alt="OLAHRAGA"
+                                     class="eskul-image"
+                                     onerror="this.src='https://placehold.co/500x300/0090EA/white?text=OLAHRAGA'">
+                                <div class="p-4 text-center">
+                                    <h3 class="text-[#333434] font-bold text-sm md:text-base" style="font-family: 'Inria Serif', serif;">OLAHRAGA</h3>
+                                </div>
+                            </div>
+                            
+                            <!-- DRUMBAND -->
+                            <div class="bg-white rounded-xl shadow-md overflow-hidden eskul-card cursor-pointer">
+                                <img src="assets/drumband.jpeg" 
+                                     alt="DRUMBAND"
+                                     class="eskul-image"
+                                     onerror="this.src='https://placehold.co/500x300/0090EA/white?text=DRUMBAND'">
+                                <div class="p-4 text-center">
+                                    <h3 class="text-[#333434] font-bold text-sm md:text-base" style="font-family: 'Inria Serif', serif;">DRUMBAND</h3>
+                                </div>
+                            </div>
+                            
+                            <!-- ENGLISH CLUB -->
+                            <div class="bg-white rounded-xl shadow-md overflow-hidden eskul-card cursor-pointer">
+                                <img src="https://www.smpn1buayan.sch.id/assets/img/foto/0ca6080e0d53e832c9ce3d901111e4e4.jpg" 
+                                     alt="ENGLISH CLUB"
+                                     class="eskul-image"
+                                     onerror="this.src='https://placehold.co/500x300/0090EA/white?text=ENGLISH CLUB'">
+                                <div class="p-4 text-center">
+                                    <h3 class="text-[#333434] font-bold text-sm md:text-base" style="font-family: 'Inria Serif', serif;">ENGLISH CLUB</h3>
+                                </div>
+                            </div>
+                            
+                            <!-- SPENSABU SAINS CLUB -->
+                            <div class="bg-white rounded-xl shadow-md overflow-hidden eskul-card cursor-pointer">
+                                <img src="https://www.smpn1buayan.sch.id/assets/img/foto/a12718f71e0bf26c48a3a9dde896f23c.jpg" 
+                                     alt="SPENSABU SAINS CLUB"
+                                     class="eskul-image"
+                                     onerror="this.src='https://placehold.co/500x300/0090EA/white?text=SPENSABU SAINS CLUB'">
+                                <div class="p-4 text-center">
+                                    <h3 class="text-[#333434] font-bold text-sm md:text-base" style="font-family: 'Inria Serif', serif;">SPENSABU SAINS CLUB</h3>
+                                </div>
+                            </div>
                         </div>
                     </div>
                     
                 </div>
                 
                 <!-- ============================================ -->
-                <!-- FOOTER -->
+                <!-- FOOTER (Font Inria Serif, tidak diubah) -->
                 <!-- ============================================ -->
                 <div class="self-stretch py-6 gradient-blue-vertical">
                     <div class="flex items-start self-stretch mb-8 ml-4 md:ml-8 mr-4 md:mr-8 footer-content flex-wrap">
@@ -721,10 +728,10 @@
                         <div class="flex flex-col shrink-0 items-start mt-4 md:mt-0 gap-2 w-full md:w-auto">
                             <span class="text-white text-sm font-bold" style="font-family: 'Inria Serif', serif;">Media Sosial</span>
                             <div class="flex items-center gap-2">
-                                <button onclick="showToast('Membuka Facebook')" class="bg-white/20 px-3 py-1 rounded-lg text-white text-xs hover:bg-white/30" style="font-family: 'Inria Serif', serif;">Facebook</button>
-                                <button onclick="showToast('Membuka Instagram')" class="bg-white/20 px-3 py-1 rounded-lg text-white text-xs hover:bg-white/30" style="font-family: 'Inria Serif', serif;">Instagram</button>
-                                <button onclick="showToast('Membuka Twitter')" class="bg-white/20 px-3 py-1 rounded-lg text-white text-xs hover:bg-white/30" style="font-family: 'Inria Serif', serif;">Twitter</button>
-                                <button onclick="showToast('Membuka YouTube')" class="bg-white/20 px-3 py-1 rounded-lg text-white text-xs hover:bg-white/30" style="font-family: 'Inria Serif', serif;">YouTube</button>
+                                <button onclick="showToast('Membuka Facebook')" class="bg-white/20 px-3 py-1 rounded-lg text-white text-xs hover:bg-white/30 transition" style="font-family: 'Inria Serif', serif;">Facebook</button>
+                                <button onclick="showToast('Membuka Instagram')" class="bg-white/20 px-3 py-1 rounded-lg text-white text-xs hover:bg-white/30 transition" style="font-family: 'Inria Serif', serif;">Instagram</button>
+                                <button onclick="showToast('Membuka Twitter')" class="bg-white/20 px-3 py-1 rounded-lg text-white text-xs hover:bg-white/30 transition" style="font-family: 'Inria Serif', serif;">Twitter</button>
+                                <button onclick="showToast('Membuka YouTube')" class="bg-white/20 px-3 py-1 rounded-lg text-white text-xs hover:bg-white/30 transition" style="font-family: 'Inria Serif', serif;">YouTube</button>
                             </div>
                         </div>
                     </div>
@@ -732,7 +739,7 @@
                     <div class="self-stretch bg-[#FFFFFFCC] h-px my-4 mx-4 md:mx-5"></div>
                     
                     <div class="flex flex-col items-center self-stretch">
-                        <span class="text-white text-xs font-bold text-center px-4" style="font-family: 'Inria Serif', serif;">Copyright © 2021 - <?= date('Y') ?> SMP NEGERI 1 BUAYAN</span>
+                        <span class="text-white text-xs font-bold text-center px-4" style="font-family: 'Inria Serif', serif;">Copyright © 2021 - 2025 SMP NEGERI 1 BUAYAN</span>
                     </div>
                 </div>
             </div>
@@ -748,33 +755,8 @@
             toast.innerHTML = message;
             document.body.appendChild(toast);
             setTimeout(() => {
-                toast.style.animation = 'slideOut 0.3s ease';
-                setTimeout(() => toast.remove(), 300);
+                if(toast) toast.remove();
             }, 2000);
-        }
-        
-        // ============================================
-        // SEARCH FUNCTION
-        // ============================================
-        function searchTable() {
-            const input = document.getElementById('searchInput');
-            const filter = input.value.toLowerCase();
-            const rows = document.querySelectorAll('#tableBody .staff-row');
-            let visibleCount = 0;
-            
-            rows.forEach(row => {
-                const name = row.cells[1].textContent.toLowerCase();
-                const nip = row.cells[2].textContent.toLowerCase();
-                const nuptk = row.cells[3].textContent.toLowerCase();
-                if (name.includes(filter) || nip.includes(filter) || nuptk.includes(filter)) {
-                    row.style.display = '';
-                    visibleCount++;
-                } else {
-                    row.style.display = 'none';
-                }
-            });
-            
-            document.getElementById('totalCount').textContent = visibleCount;
         }
         
         // ============================================

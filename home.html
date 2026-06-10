@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-    <title>SMP Negeri 1 Buayan - Berita</title>
+    <title>SMP Negeri 1 Buayan - Home</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
     <!-- Google Fonts - Inria Serif -->
@@ -19,6 +19,7 @@
             font-family: 'Inria Serif', serif;
         }
         
+        /* Custom button styles */
         .btn-outline-light {
             background: rgba(255, 255, 255, 0.3);
             border: none;
@@ -30,10 +31,35 @@
             transform: translateY(-2px);
         }
         
+        .btn-primary-custom {
+            background: #CEDCE6;
+            transition: all 0.3s ease;
+        }
+        
+        .btn-primary-custom:hover {
+            background: #b8c8d4;
+            transform: translateY(-2px);
+        }
+        
+        /* Gradient backgrounds */
+        .gradient-blue {
+            background: linear-gradient(180deg, #0090EA, #005184);
+        }
+        
         .gradient-blue-vertical {
             background: linear-gradient(180deg, #0090EA, #005184);
         }
         
+        /* Shadow utilities */
+        .shadow-custom {
+            box-shadow: 5px 5px 4px rgba(0, 0, 0, 0.25);
+        }
+        
+        .shadow-custom-sm {
+            box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+        }
+        
+        /* Hover effects */
         .hover-lift {
             transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
@@ -43,26 +69,25 @@
             box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
         }
         
-        .toast-notification {
-            position: fixed;
-            bottom: 20px;
-            right: 20px;
-            background: #333434;
-            color: white;
-            padding: 12px 20px;
-            border-radius: 8px;
-            z-index: 1000;
-            animation: slideIn 0.3s ease;
+        /* Hero overlay */
+        .hero-overlay {
+            position: relative;
         }
         
-        @keyframes slideIn {
-            from { transform: translateX(100%); opacity: 0; }
-            to { transform: translateX(0); opacity: 1; }
+        .hero-overlay::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.55);
+            z-index: 1;
         }
         
-        @keyframes slideOut {
-            from { transform: translateX(0); opacity: 1; }
-            to { transform: translateX(100%); opacity: 0; }
+        .hero-content {
+            position: relative;
+            z-index: 2;
         }
         
         /* Line clamp for text */
@@ -330,6 +355,7 @@
             font-family: 'Inria Serif', serif;
         }
         
+        /* Responsive */
         @media (max-width: 768px) {
             .mobile-menu-btn {
                 display: block;
@@ -352,6 +378,38 @@
                 display: none !important;
             }
             
+            .hero-text {
+                font-size: 28px !important;
+                width: 100% !important;
+                text-align: center !important;
+                margin-right: 0 !important;
+                padding: 0 20px !important;
+            }
+            .hero-subtext {
+                font-size: 14px !important;
+                width: 100% !important;
+                text-align: center !important;
+                padding: 0 20px !important;
+            }
+            .hero-content {
+                align-items: center !important;
+                text-align: center !important;
+                margin-bottom: 200px !important;
+            }
+            .history-section {
+                flex-direction: column;
+                align-items: center !important;
+                margin-left: 20px !important;
+                margin-right: 20px !important;
+            }
+            .history-section button {
+                width: 100%;
+                margin-right: 0 !important;
+            }
+            .history-section button img {
+                width: 100% !important;
+                height: auto !important;
+            }
             .footer-content {
                 flex-direction: column;
                 gap: 20px;
@@ -367,11 +425,59 @@
             .grid-cols-3 {
                 grid-template-columns: 1fr !important;
             }
+            .agenda-card {
+                margin-left: 20px !important;
+                margin-right: 20px !important;
+                flex-direction: column !important;
+                align-items: center !important;
+                text-align: center !important;
+            }
+            .agenda-card .gradient-blue {
+                margin-bottom: 15px !important;
+            }
+            .sejarah-text {
+                font-size: 12px !important;
+            }
+            .sejarah-title {
+                font-size: 24px !important;
+            }
+            .berita-header {
+                flex-direction: column !important;
+                align-items: center !important;
+                text-align: center !important;
+                margin-left: 20px !important;
+                margin-right: 20px !important;
+            }
+            .agenda-header {
+                margin-left: 20px !important;
+                margin-right: 20px !important;
+                flex-direction: column !important;
+                align-items: center !important;
+                text-align: center !important;
+            }
         }
         
         @media (min-width: 769px) {
             .nav-menu-mobile {
                 display: none !important;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .hero-text {
+                font-size: 22px !important;
+            }
+            .hero-subtext {
+                font-size: 12px !important;
+            }
+            .sejarah-title {
+                font-size: 20px !important;
+            }
+            .berita-title {
+                font-size: 20px !important;
+            }
+            .agenda-title {
+                font-size: 20px !important;
             }
         }
         
@@ -386,66 +492,9 @@
     </style>
 </head>
 <body>
-    <?php
-    // DATA BERITA
-    $beritaList = [
-        [
-            'id' => 1,
-            'judul' => 'Sosialisasi Mahasiswa UNIMUGO',
-            'slug' => 'sosialisasi-mahasiswa-unimugo',
-            'tanggal' => '23 Mei 2026',
-            'konten' => 'Sabtu, 23 Mei 2026, bertempat di ruang multimedia, Mahasiswa Universitas Muhammadiyah Gombong melaksanakan sosialisasi tentang pendidikan dan pengenalan kampus kepada siswa kelas IX.',
-            'gambar' => 'https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/162071d0-7b22-40a2-b38b-7b715360184e'
-        ],
-        [
-            'id' => 2,
-            'judul' => 'Sosialisasi SMA/K Hari Ke-3',
-            'slug' => 'sosialisasi-sma-k-hari-ke-3',
-            'tanggal' => '23 Mei 2026',
-            'konten' => 'Hari Sabtu, 23 Mei 2026 menjadi hari ke 3 Sosialisasi SMA/K kepada peserta didik kelas IX SMPN 1 Buayan.',
-            'gambar' => 'https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/e719aeea-29ca-4bc6-9d88-fb8eb1ac933d'
-        ],
-        [
-            'id' => 3,
-            'judul' => 'Sosialisasi SMA/K Hari Ke-2',
-            'slug' => 'sosialisasi-sma-k-hari-ke-2',
-            'tanggal' => '22 Mei 2026',
-            'konten' => 'Sosialisasi jenjang SMA/K untuk peserta didik kelas IX hari ini merupakan hari kedua dari rangkaian kegiatan.',
-            'gambar' => 'https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/458213b3-de19-44be-a1ed-9d2321ea6974'
-        ],
-        [
-            'id' => 4,
-            'judul' => 'Sosialisasi SMA/K Hari Ke-1',
-            'slug' => 'sosialisasi-sma-k-hari-ke-1',
-            'tanggal' => '21 Mei 2026',
-            'konten' => 'Setelah rangkaian kegiatan Akhir untuk siswa kelas IX, mereka kemudian memiliki kesempatan untuk mengenal berbagai SMA/K.',
-            'gambar' => 'https://smpn1buayan.sch.id/assets/img/foto/cc92a1ebf536b684bcef449a9c58aa6d.jpeg'
-        ],
-        [
-            'id' => 5,
-            'judul' => 'Upacara Hari Kebangkitan Nasional Ke-118',
-            'slug' => 'upacara-hari-kebangkitan-nasional',
-            'tanggal' => '20 Mei 2026',
-            'konten' => 'Rabu, tanggal 20 Mei 2026 merupakan Hari Kebangkitan Nasional, dan SMPN 1 Buayan mengadakan upacara bendera.',
-            'gambar' => 'https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/7e1c8bd3-3cb4-425a-a373-28f054aeffa7'
-        ],
-        [
-            'id' => 6,
-            'judul' => 'A NEW LOOK',
-            'slug' => 'a-new-look',
-            'tanggal' => '19 Mei 2026',
-            'konten' => 'Selamat datang dan selamat berjumpa dengan website (laman) smpn1buayan.sch.id kepada seluruh pengunjung.',
-            'gambar' => 'https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/c7e650b0-db47-406b-833f-f3c1a7031570'
-        ]
-    ];
-    ?>
-    
     <div class="flex flex-col bg-white">
         <div class="flex flex-col items-start self-stretch bg-[#EAF1F4]">
             <div class="self-stretch">
-                <!-- ============================================ -->
-                <!-- HEADER & NAVBAR seperti halaman HOME -->
-                <!-- ============================================ -->
                 <div class="bg-white shadow-sm">
                     <div class="desktop-nav">
                         <div class="logo-area">
@@ -462,18 +511,18 @@
                             <i class="fa-solid fa-bars"></i>
                         </button>
                         
-                        <!-- Desktop Navigation Menu dengan Dropdown -->
+                       <!-- Desktop Navigation Menu dengan Dropdown -->
                         <div class="nav-menu-desktop">
-                            <a href="home.php" style="font-family: 'Inria Serif', serif;">Home</a>
+                            <a href="home.html" style="font-family: 'Inria Serif', serif;">Home</a>
                             
                             <div class="dropdown">
                                 <button class="dropbtn" onclick="toggleDropdown(event, this)">
                                     Berita <i class="fa-solid fa-chevron-down text-[9px] ml-1"></i>
                                 </button>
                                 <div class="dropdown-content">
-                                    <a href="berita.php">Berita</a>
-                                    <a href="pengumuman.php">Pengumuman</a>
-                                    <a href="agenda.php">Agenda</a>
+                                    <a href="berita.html">Berita</a>
+                                    <a href="pengumuman.html">Pengumuman</a>
+                                    <a href="agenda.html">Agenda</a>
                                 </div>
                             </div>
                             
@@ -482,13 +531,13 @@
                                     Profil <i class="fa-solid fa-chevron-down text-[9px] ml-1"></i>
                                 </button>
                                 <div class="dropdown-content">
-                                    <a href="profil.php">Profil Sekolah</a>
-                                    <a href="sejarah.php">Sejarah</a>
-                                    <a href="visi-misi.php">Visi & Misi</a>
-                                    <a href="struktur-organisasi.php">Struktur Organisasi</a>
-                                    <a href="tenaga-edukatif.php">Tenaga Edukatif</a>
-                                    <a href="tenaga-non-edukatif.php">Tenaga Non Edukatif</a>
-                                    <a href="sarana-prasarana.php">Sarana Prasarana</a>
+                                    <a href="profil.html">Profil Sekolah</a>
+                                    <a href="sejarah.html">Sejarah</a>
+                                    <a href="visi-misi.html">Visi & Misi</a>
+                                    <a href="struktur-organisasi.html">Struktur Organisasi</a>
+                                    <a href="tenaga-edukatif.html">Tenaga Edukatif</a>
+                                    <a href="tenaga-non-edukatif.html">Tenaga Non Edukatif</a>
+                                    <a href="sarana-prasarana.html">Sarana Prasarana</a>
                                 </div>
                             </div>
                             
@@ -497,23 +546,23 @@
                                     Pendidikan <i class="fa-solid fa-chevron-down text-[9px] ml-1"></i>
                                 </button>
                                 <div class="dropdown-content">
-                                    <a href="struktur-kurikulum.php">Struktur Kurikulum</a>
-                                    <a href="kalender-akademik.php">Kalender Akademik</a>
-                                    <a href="rekap-ujian.php">Rekap Ujian Sekolah</a>
-                                    <a href="ekstrakurikuler.php">Ekstrakurikuler</a>
+                                    <a href="struktur-kurikulum.html">Struktur Kurikulum</a>
+                                    <a href="kalender-akademik.html">Kalender Akademik</a>
+                                    <a href="rekap-ujian.html">Rekap Ujian Sekolah</a>
+                                    <a href="ekstrakurikuler.html">Ekstrakurikuler</a>
                                 </div>
                             </div>
                             
-                            <a href="peserta-didik.php" style="font-family: 'Inria Serif', serif;">Peserta Didik</a>
+                            <a href="peserta-didik.html" style="font-family: 'Inria Serif', serif;">Peserta Didik</a>
                             
                             <div class="dropdown">
                                 <button class="dropbtn" onclick="toggleDropdown(event, this)">
                                     Prestasi <i class="fa-solid fa-chevron-down text-[9px] ml-1"></i>
                                 </button>
                                 <div class="dropdown-content">
-                                    <a href="prestasi-sekolah.php">Prestasi Sekolah</a>
-                                    <a href="prestasi-siswa.php">Prestasi Siswa</a>
-                                    <a href="prestasi-guru.php">Prestasi Guru</a>
+                                    <a href="prestasi-sekolah.html">Prestasi Sekolah</a>
+                                    <a href="prestasi-siswa.html">Prestasi Siswa</a>
+                                    <a href="prestasi-guru.html">Prestasi Guru</a>
                                 </div>
                             </div>
                             
@@ -522,8 +571,8 @@
                                     Alumni <i class="fa-solid fa-chevron-down text-[9px] ml-1"></i>
                                 </button>
                                 <div class="dropdown-content">
-                                    <a href="data-alumni.php">Data Alumni</a>
-                                    <a href="penelusuran-alumni.php">Penelusuran Alumni</a>
+                                    <a href="data-alumni.html">Data Alumni</a>
+                                    <a href="penelusuran-alumni.html">Penelusuran Alumni</a>
                                 </div>
                             </div>
                             
@@ -532,8 +581,8 @@
                                     Galeri <i class="fa-solid fa-chevron-down text-[9px] ml-1"></i>
                                 </button>
                                 <div class="dropdown-content">
-                                    <a href="galeri-foto.php">Foto</a>
-                                    <a href="galeri-video.php">Video</a>
+                                    <a href="galeri-foto.html">Foto</a>
+                                    <a href="galeri-video.html">Video</a>
                                 </div>
                             </div>
                             
@@ -545,12 +594,12 @@
                                     <a href="https://siak.smpn1buayan.sch.id/">SIAK</a>
                                 </div>
                             </div>
-                            <a href="download.php" style="color:#333434; font-family: 'Inria Serif', serif;">Download</a>
+                            <a href="download.html" style="color:#333434; font-family: 'Inria Serif', serif;">Download</a>
                         </div>
                     </div>
                 </div>
                 
-                   <!-- Mobile Navigation Menu dengan Dropdown Accordion -->
+                <!-- Mobile Navigation Menu dengan Dropdown Accordion -->
                 <div class="nav-menu-mobile" id="navMenuMobile">
                     <button class="close-menu-btn" onclick="closeMobileMenu()">
                         <i class="fa-solid fa-times"></i>
@@ -558,64 +607,64 @@
                     <div style="padding: 0 25px;">
                         <div class="menu-title">Menu Navigasi</div>
                     </div>
-                    <a href="home.php">🏠 Home</a>
+                    <a href="home.html">🏠 Home</a>
                     
                     <div class="mobile-dropdown">
                         <button class="mobile-dropbtn" onclick="toggleMobileDropdown(this)">📰 Berita</button>
                         <div class="mobile-dropdown-content">
-                            <a href="berita.php">Berita</a>
-                            <a href="pengumuman.php">Pengumuman</a>
-                            <a href="agenda.php">Agenda</a>
+                            <a href="berita.html">Berita</a>
+                            <a href="pengumuman.html">Pengumuman</a>
+                            <a href="agenda.html">Agenda</a>
                         </div>
                     </div>
                     
                     <div class="mobile-dropdown">
                         <button class="mobile-dropbtn" onclick="toggleMobileDropdown(this)">🏫 Profil</button>
                         <div class="mobile-dropdown-content">
-                            <a href="profil.php">Profil Sekolah</a>
-                            <a href="sejarah.php">Sejarah</a>
-                            <a href="visi-misi.php">Visi & Misi</a>
-                            <a href="struktur-organisasi.php">Struktur Organisasi</a>
-                            <a href="tenaga-edukatif.php">Tenaga Edukatif</a>
-                            <a href="tenaga-non-edukatif.php">Tenaga Non Edukatif</a>
-                            <a href="sarana-prasarana.php">Sarana Prasarana</a>
+                            <a href="profil.html">Profil Sekolah</a>
+                            <a href="sejarah.html">Sejarah</a>
+                            <a href="visi-misi.html">Visi & Misi</a>
+                            <a href="struktur-organisasi.html">Struktur Organisasi</a>
+                            <a href="tenaga-edukatif.html">Tenaga Edukatif</a>
+                            <a href="tenaga-non-edukatif.html">Tenaga Non Edukatif</a>
+                            <a href="sarana-prasarana.html">Sarana Prasarana</a>
                         </div>
                     </div>
                     
                     <div class="mobile-dropdown">
                         <button class="mobile-dropbtn" onclick="toggleMobileDropdown(this)">📚 Pendidikan</button>
                         <div class="mobile-dropdown-content">
-                            <a href="struktur-kurikulum.php">Struktur Kurikulum</a>
-                            <a href="kalender-akademik.php">Kalender Akademik</a>
-                            <a href="rekap-ujian.php">Rekap Ujian Sekolah</a>
-                            <a href="ekstrakurikuler.php">Ekstrakurikuler</a>
+                            <a href="struktur-kurikulum.html">Struktur Kurikulum</a>
+                            <a href="kalender-akademik.html">Kalender Akademik</a>
+                            <a href="rekap-ujian.html">Rekap Ujian Sekolah</a>
+                            <a href="ekstrakurikuler.html">Ekstrakurikuler</a>
                         </div>
                     </div>
                     
-                    <a href="peserta-didik.php">👨‍🎓 Peserta Didik</a>
+                    <a href="peserta-didik.html">👨‍🎓 Peserta Didik</a>
                     
                     <div class="mobile-dropdown">
                         <button class="mobile-dropbtn" onclick="toggleMobileDropdown(this)">🏆 Prestasi</button>
                         <div class="mobile-dropdown-content">
-                            <a href="prestasi-sekolah.php">Prestasi Sekolah</a>
-                            <a href="prestasi-siswa.php">Prestasi Siswa</a>
-                            <a href="prestasi-guru.php">Prestasi Guru</a>
+                            <a href="prestasi-sekolah.html">Prestasi Sekolah</a>
+                            <a href="prestasi-siswa.html">Prestasi Siswa</a>
+                            <a href="prestasi-guru.html">Prestasi Guru</a>
                         </div>
                     </div>
                     
                     <div class="mobile-dropdown">
                         <button class="mobile-dropbtn" onclick="toggleMobileDropdown(this)">👥 Alumni</button>
                         <div class="mobile-dropdown-content">
-                            <a href="data-alumni.php">Data Alumni</a>
-                            <a href="penelusuran-alumni.php">Penelusuran Alumni</a>
+                            <a href="data-alumni.html">Data Alumni</a>
+                            <a href="penelusuran-alumni.html">Penelusuran Alumni</a>
                         </div>
                     </div>
                     
                     <div class="mobile-dropdown">
                         <button class="mobile-dropbtn" onclick="toggleMobileDropdown(this)">🖼️ Galeri</button>
                         <div class="mobile-dropdown-content">
-                            <a href="galeri-foto.php">Foto</a>
-                            <a href="galeri-video.php">Video</a>
+                            <a href="galeri-foto.html">Foto</a>
+                            <a href="galeri-video.html">Video</a>
                         </div>
                     </div>
                     
@@ -626,47 +675,174 @@
                         </div>
                     </div>
                     
-                    <a href="download.php" class="block px-6 py-3 text-sm font-medium cursor-pointer hover:text-blue-600 transition border-b border-gray-100">⬇️ Download</a>
+                    <a href="download.html" class="block px-6 py-3 text-sm font-medium cursor-pointer hover:text-blue-600 transition border-b border-gray-100">⬇️ Download</a>
                 </div>
                 
                 <div class="menu-overlay" id="menuOverlay" onclick="closeMobileMenu()"></div>
 
                 
                 <!-- ============================================ -->
-                <!-- KONTEN HALAMAN BERITA -->
+                <!-- KONTEN HOME (Hero, Sejarah, Berita, Agenda) -->
                 <!-- ============================================ -->
-                <div class="bg-[#EAF1F4] pb-12">
-                    <!-- Judul BERITA -->
-                    <div class="text-center pt-8 pb-4">
-                        <h1 class="text-[#333434] text-4xl font-bold tracking-wider" style="font-family: 'Inria Serif', serif;">BERITA</h1>
+                
+                <!-- Hero Section with Overlay -->
+                <div class="self-stretch">
+                    <div class="hero-overlay relative flex flex-col items-start self-stretch bg-cover bg-center pt-12 min-h-[350px] md:min-h-[450px]"
+                         style="background-image: url('https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/6a5b273b-bd5b-4962-b70f-437681b6509b'); background-position: center;">
+                        <div class="hero-content flex flex-col items-start mb-[80px] md:mb-[200px] gap-[5px] w-full" style="padding-left: 3%;">
+                            <span class="text-white text-2xl md:text-4xl font-bold hero-text w-full text-left" style="font-family: 'Inria Serif', serif;">
+                                Selamat Datang di SMP
+                            </span>
+                            <span class="text-white text-2xl md:text-4xl font-bold hero-text w-full text-left" style="font-family: 'Inria Serif', serif;">
+                                Negeri 1 Buayan
+                            </span>
+                            <span class="text-white text-sm md:text-xl font-bold hero-subtext w-full text-left mt-3" style="font-family: 'Inria Serif', serif; line-height: 1.4;">
+                                Unggul dalam Mutu, Terampil, Santun dalam Perilaku, Berwawasan
+                            </span>
+                            <span class="text-white text-sm md:text-xl font-bold hero-subtext w-full text-left" style="font-family: 'Inria Serif', serif;">
+                                Lingkungan, Berdasarkan Iman dan Taqwa
+                            </span>
+                        </div>
                     </div>
+                </div>
+                
+                <!-- History Section -->
+                <div class="flex items-start self-stretch my-10 mx-[20px] md:mx-[33px] history-section gap-6">
+                    <button class="flex flex-col shrink-0 items-start bg-[#CEDCE6] text-left p-4 rounded-[15px] border-0 btn-primary-custom hover-lift w-full md:w-auto"
+                            onclick="alert('Membuka galeri foto sekolah!')">
+                        <img src="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/962d68b2-2f7e-4a45-b0d8-af2e6430e429" 
+                             class="w-full md:w-[400px] h-auto md:h-[260px] object-cover rounded-[10px]"
+                             alt="School History Image">
+                    </button>
                     
-                    <!-- Garis pemisah -->
-                    <div class="flex justify-center px-4">
-                        <div class="w-[90%] h-px bg-[#636566]"></div>
+                    <div class="flex flex-1 flex-col items-start gap-[9px]">
+                        <div class="flex flex-col items-start self-stretch gap-[15px]">
+                            <span class="text-[#333434] text-2xl md:text-[32px] font-bold sejarah-title" style="font-family: 'Inria Serif', serif;">SEJARAH</span>
+                            <span class="text-[#636566] text-xs md:text-sm font-bold leading-relaxed sejarah-text" style="font-family: 'Inria Serif', serif;">
+                                Berawal dari sebuah Sekolah Teknik (ST) yang berada di Gombong. Pada waktu itu ada dua Sekolah Teknik setingkat SMP di Gombong yaitu ST Negeri 1 dan ST Negeri 2 yang berada dalam satu komplek. Pada tahun 1977 ST Negeri 2 berintegrasi menjadi SMP Negeri 1 Buayan, sementara ST Negeri 1 sekarang menjadi SMP Negeri 4 Gombong. Pada awal kepindahannya ke Buayan, SMPN 1 Buayan belum memiliki tempat, sehingga sementara menempati Balai Desa Buayan yang berlokasi di sebelah selatan lapangan Buayan. Baru pada tahun 1979 berpindah ke lokasi SMPN 1 Buayan yang sekarang yaitu di Jalan Karangbolong kecamatan Buayan, tepatnya di desa Sikayu RT. 3 RW. 9 Kecamatan Buayan.
+                            </span>
+                        </div>
+                        <button class="flex flex-col items-start bg-[#FFFFFF4D] text-left py-[8px] px-3 rounded-[50px] border-0 shadow-custom-sm btn-outline-light hover-lift"
+                                onclick="window.location.href='sejarah.html'">
+                            <span class="text-[#333434] text-[10px] font-bold" style="font-family: 'Inria Serif', serif;">Baca Selengkapnya →</span>
+                        </button>
                     </div>
-                    
-                    <!-- Daftar Berita - GRID -->
-                    <div class="max-w-6xl mx-auto px-6 mt-10">
+                </div>
+                
+                <!-- LATEST NEWS SECTION -->
+                <div class="self-stretch bg-[#DEE9EF] py-8">
+                    <div class="max-w-6xl mx-auto px-4">
+                        <div class="flex justify-between items-center mb-8 flex-wrap gap-4 berita-header">
+                            <div class="text-center md:text-left w-full md:w-auto">
+                                <h2 class="text-[#333434] text-xl md:text-2xl font-bold berita-title" style="font-family: 'Inria Serif', serif;">Berita Terkini</h2>
+                                <p class="text-[#636566] text-xs md:text-sm" style="font-family: 'Inria Serif', serif;">Informasi dan kegiatan terbaru dari SMP Negeri 1 Buayan</p>
+                            </div>
+                            <a href="berita.html" class="bg-[#FFFFFF4D] py-2 px-5 rounded-full shadow-sm text-[#333434] text-xs font-bold hover:bg-white/50 transition inline-block" style="font-family: 'Inria Serif', serif;">
+                                Lihat Semua →
+                            </a>
+                        </div>
+                        
                         <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                            <?php foreach($beritaList as $index => $berita): ?>
-                            <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 cursor-pointer hover:-translate-y-1">
-                                <div class="w-full h-48 overflow-hidden">
-                                    <img src="<?= $berita['gambar'] ?>" 
+                            <!-- Berita 1 -->
+                            <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer">
+                                <div class="w-full h-44 overflow-hidden">
+                                    <img src="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/162071d0-7b22-40a2-b38b-7b715360184e" 
                                          class="w-full h-full object-cover hover:scale-105 transition duration-300"
-                                         alt="<?= $berita['judul'] ?>">
+                                         alt="Sosialisasi Mahasiswa UNIMUGO">
                                 </div>
                                 <div class="p-4">
-                                    <div class="text-[#636566] text-xs mb-2" style="font-family: 'Inria Serif', serif;">📅 <?= $berita['tanggal'] ?></div>
-                                    <h2 class="text-[#333434] text-base font-bold mb-2 line-clamp-2" style="font-family: 'Inria Serif', serif;"><?= $berita['judul'] ?></h2>
-                                    <p class="text-[#636566] text-xs leading-relaxed line-clamp-3 mb-3" style="font-family: 'Inria Serif', serif;"><?= $berita['konten'] ?></p>
-                                    <a href="detail-berita.php?id=<?= $berita['id'] ?>" 
-                                       class="text-[#0090EA] text-xs font-semibold hover:text-[#005184] transition flex items-center gap-1 inline-block" style="font-family: 'Inria Serif', serif;">
+                                    <div class="text-[#636566] text-xs mb-2" style="font-family: 'Inria Serif', serif;">📅 23 Mei 2026</div>
+                                    <h3 class="text-[#333434] text-sm md:text-base font-bold mb-2 line-clamp-2" style="font-family: 'Inria Serif', serif;">Sosialisasi Mahasiswa UNIMUGO</h3>
+                                    <p class="text-[#636566] text-xs leading-relaxed line-clamp-3 mb-3" style="font-family: 'Inria Serif', serif;">Sabtu, 23 Mei 2026, bertempat di ruang multimedia, Mahasiswa Universitas Muhammadiyah Gombong melaksanakan sosialisasi tentang pendidikan dan pengenalan kampus kepada siswa kelas IX.</p>
+                                    <a href="detail-berita.html?id=1" class="text-[#0090EA] text-xs font-semibold hover:text-[#005184] transition flex items-center gap-1" style="font-family: 'Inria Serif', serif;">
                                         Lihat Detail →
                                     </a>
                                 </div>
                             </div>
-                            <?php endforeach; ?>
+                            
+                            <!-- Berita 2 -->
+                            <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer">
+                                <div class="w-full h-44 overflow-hidden">
+                                    <img src="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/e719aeea-29ca-4bc6-9d88-fb8eb1ac933d" 
+                                         class="w-full h-full object-cover hover:scale-105 transition duration-300"
+                                         alt="Sosialisasi SMA/K Hari Ke-3">
+                                </div>
+                                <div class="p-4">
+                                    <div class="text-[#636566] text-xs mb-2" style="font-family: 'Inria Serif', serif;">📅 23 Mei 2026</div>
+                                    <h3 class="text-[#333434] text-sm md:text-base font-bold mb-2 line-clamp-2" style="font-family: 'Inria Serif', serif;">Sosialisasi SMA/K Hari Ke-3</h3>
+                                    <p class="text-[#636566] text-xs leading-relaxed line-clamp-3 mb-3" style="font-family: 'Inria Serif', serif;">Hari Sabtu, 23 Mei 2026 menjadi hari ke 3 Sosialisasi SMA/K kepada peserta didik kelas IX SMPN 1 Buayan.</p>
+                                    <a href="detail-berita.html?id=2" class="text-[#0090EA] text-xs font-semibold hover:text-[#005184] transition flex items-center gap-1" style="font-family: 'Inria Serif', serif;">
+                                        Lihat Detail →
+                                    </a>
+                                </div>
+                            </div>
+                            
+                            <!-- Berita 3 -->
+                            <div class="bg-white rounded-xl overflow-hidden shadow-md hover:shadow-xl transition-all duration-300 hover:-translate-y-1 cursor-pointer">
+                                <div class="w-full h-44 overflow-hidden">
+                                    <img src="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/458213b3-de19-44be-a1ed-9d2321ea6974" 
+                                         class="w-full h-full object-cover hover:scale-105 transition duration-300"
+                                         alt="Sosialisasi SMA/K Hari Ke-2">
+                                </div>
+                                <div class="p-4">
+                                    <div class="text-[#636566] text-xs mb-2" style="font-family: 'Inria Serif', serif;">📅 22 Mei 2026</div>
+                                    <h3 class="text-[#333434] text-sm md:text-base font-bold mb-2 line-clamp-2" style="font-family: 'Inria Serif', serif;">Sosialisasi SMA/K Hari Ke-2</h3>
+                                    <p class="text-[#636566] text-xs leading-relaxed line-clamp-3 mb-3" style="font-family: 'Inria Serif', serif;">Sosialisasi jenjang SMA/K untuk peserta didik kelas IX hari ini merupakan hari kedua dari rangkaian kegiatan.</p>
+                                    <a href="detail-berita.html?id=3" class="text-[#0090EA] text-xs font-semibold hover:text-[#005184] transition flex items-center gap-1" style="font-family: 'Inria Serif', serif;">
+                                        Lihat Detail →
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- School Agenda Section -->
+                <div class="flex justify-between items-center self-stretch mb-5 mx-[20px] md:mx-[33px] flex-wrap gap-4 agenda-header">
+                    <div class="flex flex-col shrink-0 items-start gap-1 text-center md:text-left w-full md:w-auto">
+                        <span class="text-[#333434] text-xl md:text-2xl font-bold agenda-title" style="font-family: 'Inria Serif', serif;">Agenda Sekolah</span>
+                        <span class="text-[#636566] text-xs md:text-sm font-bold" style="font-family: 'Inria Serif', serif;">Jadwal Kegiatan & Acara Sekolah</span>
+                    </div>
+                    <button class="flex flex-col shrink-0 items-start bg-[#FFFFFF4D] text-left py-[8px] px-4 rounded-[50px] border-0 shadow-custom-sm btn-outline-light hover-lift"
+                            onclick="window.location.href='agenda.html'">
+                        <span class="text-[#333434] text-[10px] font-bold" style="font-family: 'Inria Serif', serif;">Lihat Semua →</span>
+                    </button>
+                </div>
+                
+                <!-- Agenda 1 -->
+                <div class="flex items-start bg-[#FFFFFF80] py-4 mb-6 rounded-[20px] shadow-custom agenda-card w-full md:w-[60%]">
+                    <div class="flex flex-col shrink-0 items-start pt-3 pb-4 pl-5 pr-6 ml-5 mr-4 gap-3 gradient-blue rounded-[12px] min-w-[100px]">
+                        <div class="flex flex-col items-center relative">
+                            <span class="text-white text-xl md:text-2xl font-bold whitespace-nowrap" style="font-family: 'Inria Serif', serif;">3-9</span>
+                            <span class="text-white text-base md:text-lg absolute bottom-[-18px] right-0 left-0 text-center" style="font-family: 'Inria Serif', serif;">Juni</span>
+                        </div>
+                        <span class="text-white text-xs text-center w-full" style="font-family: 'Inria Serif', serif;">2026</span>
+                    </div>
+                    <div class="flex flex-col shrink-0 items-start gap-1 flex-1 py-2 text-center md:text-left">
+                        <span class="text-[#333434] text-base md:text-lg font-bold" style="font-family: 'Inria Serif', serif;">Pelaksanaan PSAT Tahun Ajaran 2025/2026</span>
+                        <div class="flex items-center gap-1 justify-center md:justify-start">
+                            <img src="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/977bb764-6a88-4c76-9b88-227d3e4a4fc9" 
+                                 class="w-3 h-3 object-fill">
+                            <span class="text-[#636566] text-xs md:text-sm font-bold" style="font-family: 'Inria Serif', serif;">SMP Negeri 1 Buayan</span>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Agenda 2 -->
+                <div class="flex items-start bg-[#FFFFFF80] py-4 mb-6 rounded-[20px] shadow-custom agenda-card w-full md:w-[60%]">
+                    <div class="flex flex-col shrink-0 items-start pt-3 pb-4 pl-5 pr-6 ml-5 mr-4 gap-3 gradient-blue rounded-[12px] min-w-[100px]">
+                        <div class="flex flex-col items-center relative">
+                            <span class="text-white text-xl md:text-2xl font-bold whitespace-nowrap" style="font-family: 'Inria Serif', serif;">2</span>
+                            <span class="text-white text-base md:text-lg absolute bottom-[-18px] right-0 left-0 text-center" style="font-family: 'Inria Serif', serif;">Juni</span>
+                        </div>
+                        <span class="text-white text-xs text-center w-full" style="font-family: 'Inria Serif', serif;">2026</span>
+                    </div>
+                    <div class="flex flex-col shrink-0 items-start gap-1 flex-1 py-2 text-center md:text-left">
+                        <span class="text-[#333434] text-base md:text-lg font-bold" style="font-family: 'Inria Serif', serif;">Pengumuman & Perpisahan Murid Kelas IX</span>
+                        <div class="flex items-center gap-1 justify-center md:justify-start">
+                            <img src="https://figma-alpha-api.s3.us-west-2.amazonaws.com/images/977bb764-6a88-4c76-9b88-227d3e4a4fc9" 
+                                 class="w-3 h-3 object-fill">
+                            <span class="text-[#636566] text-xs md:text-sm font-bold" style="font-family: 'Inria Serif', serif;">SMP Negeri 1 Buayan</span>
                         </div>
                     </div>
                 </div>
@@ -725,11 +901,11 @@
                             <span class="text-white text-sm font-bold" style="font-family: 'Inria Serif', serif;">Media Sosial</span>
                             <div class="flex items-center gap-2">
                                 <button class="bg-white/20 px-3 py-1 rounded-lg text-white text-xs hover:bg-white/30 transition" style="font-family: 'Inria Serif', serif;"
-                                        onclick="showToast('Membuka Facebook!')">Facebook</button>
+                                        onclick="alert('Membuka Facebook!')">Facebook</button>
                                 <button class="bg-white/20 px-3 py-1 rounded-lg text-white text-xs hover:bg-white/30 transition" style="font-family: 'Inria Serif', serif;"
-                                        onclick="showToast('Membuka Instagram!')">Instagram</button>
+                                        onclick="alert('Membuka Instagram!')">Instagram</button>
                                 <button class="bg-white/20 px-3 py-1 rounded-lg text-white text-xs hover:bg-white/30 transition" style="font-family: 'Inria Serif', serif;"
-                                        onclick="showToast('Membuka YouTube!')">YouTube</button>
+                                        onclick="alert('Membuka YouTube!')">YouTube</button>
                             </div>
                         </div>
                     </div>
@@ -737,42 +913,37 @@
                     <div class="self-stretch bg-[#FFFFFFCC] h-px my-4 mx-4 md:mx-5"></div>
                     
                     <div class="flex flex-col items-center self-stretch">
-                        <span class="text-white text-xs font-bold text-center px-4" style="font-family: 'Inria Serif', serif;">Copyright © 2021 - <?= date('Y') ?> SMP NEGERI 1 BUAYAN</span>
+                        <span class="text-white text-xs font-bold text-center px-4" style="font-family: 'Inria Serif', serif;">Copyright © 2021 - 2025 SMP NEGERI 1 BUAYAN</span>
                     </div>
                 </div>
+                
             </div>
         </div>
     </div>
     
     <script>
-        function showToast(message) {
-            let toast = document.querySelector('.toast-notification');
-            if(toast) toast.remove();
-            toast = document.createElement('div');
-            toast.className = 'toast-notification';
-            toast.innerHTML = message;
-            document.body.appendChild(toast);
-            setTimeout(() => {
-                toast.style.animation = 'slideOut 0.3s ease';
-                setTimeout(() => toast.remove(), 300);
-            }, 2000);
-        }
-        
         // ============================================
         // DESKTOP DROPDOWN - KLIK UNTUK BUKA/TUTUP
         // ============================================
         function toggleDropdown(event, button) {
             event.stopPropagation();
+            
+            // Cari dropdown container terdekat dari tombol yang diklik
             const dropdown = button.closest('.dropdown');
+            
+            // Tutup semua dropdown lain
             const allDropdowns = document.querySelectorAll('.dropdown');
             allDropdowns.forEach(dd => {
                 if (dd !== dropdown) {
                     dd.classList.remove('show');
                 }
             });
+            
+            // Toggle dropdown yang diklik
             dropdown.classList.toggle('show');
         }
         
+        // Tutup semua dropdown jika klik di luar
         document.addEventListener('click', function(event) {
             const allDropdowns = document.querySelectorAll('.dropdown');
             allDropdowns.forEach(dropdown => {
@@ -813,11 +984,12 @@
             document.body.style.overflow = '';
         }
         
-        // Animasi fade-in
+        // Tutup menu mobile saat klik link
         document.addEventListener('DOMContentLoaded', function() {
             document.body.classList.add('fade-in');
-            const menuLinks = document.querySelectorAll('#navMenuMobile a, #navMenuMobile .mobile-dropdown-content a');
-            menuLinks.forEach(link => {
+            
+            const mobileLinks = document.querySelectorAll('#navMenuMobile a');
+            mobileLinks.forEach(link => {
                 link.addEventListener('click', function() {
                     if (window.innerWidth <= 768) {
                         closeMobileMenu();
@@ -826,12 +998,13 @@
             });
         });
         
+        // Handle resize window
         window.addEventListener('resize', function() {
             if (window.innerWidth > 768) {
                 const navMenu = document.getElementById('navMenuMobile');
                 const overlay = document.getElementById('menuOverlay');
-                navMenu.classList.remove('show');
-                overlay.classList.remove('show');
+                if (navMenu) navMenu.classList.remove('show');
+                if (overlay) overlay.classList.remove('show');
                 document.body.style.overflow = '';
             }
         });

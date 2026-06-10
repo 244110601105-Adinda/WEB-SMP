@@ -405,44 +405,6 @@
     </style>
 </head>
 <body>
-    <?php
-    // DATA PESERTA DIDIK - sesuai gambar: hanya total per kelas (tanpa rincian L/P)
-    $pesertaDidik = [
-        '2023/2024' => [
-            'kelas_vii' => 210,
-            'kelas_viii' => 207,
-            'kelas_ix' => 193,
-        ],
-        '2024/2025' => [
-            'kelas_vii' => 215,
-            'kelas_viii' => 213,
-            'kelas_ix' => 199,
-        ],
-        '2025/2026' => [
-            'kelas_vii' => 224,
-            'kelas_viii' => 219,
-            'kelas_ix' => 215,
-        ],
-    ];
-
-    $tahunList = array_keys($pesertaDidik);
-    $selectedTahun = isset($_GET['tahun']) ? $_GET['tahun'] : '2025/2026';
-    if (!isset($pesertaDidik[$selectedTahun])) {
-        $selectedTahun = '2025/2026';
-    }
-    
-    // Data untuk semua tahun (tabel lengkap)
-    $allData = [];
-    foreach ($pesertaDidik as $tahun => $data) {
-        $allData[] = [
-            'tahun' => $tahun,
-            'kelas_vii' => $data['kelas_vii'],
-            'kelas_viii' => $data['kelas_viii'],
-            'kelas_ix' => $data['kelas_ix'],
-            'jumlah' => $data['kelas_vii'] + $data['kelas_viii'] + $data['kelas_ix']
-        ];
-    }
-    ?>
     
     <div class="flex flex-col bg-white">
         <div class="flex flex-col items-start self-stretch bg-[#EAF1F4]">
@@ -468,16 +430,16 @@
                         
                          <!-- Desktop Navigation Menu dengan Dropdown -->
                         <div class="nav-menu-desktop">
-                            <a href="home.php" style="font-family: 'Inria Serif', serif;">Home</a>
+                            <a href="home.html" style="font-family: 'Inria Serif', serif;">Home</a>
                             
                             <div class="dropdown">
                                 <button class="dropbtn" onclick="toggleDropdown(event, this)">
                                     Berita <i class="fa-solid fa-chevron-down text-[9px] ml-1"></i>
                                 </button>
                                 <div class="dropdown-content">
-                                    <a href="berita.php">Berita</a>
-                                    <a href="pengumuman.php">Pengumuman</a>
-                                    <a href="agenda.php">Agenda</a>
+                                    <a href="berita.html">Berita</a>
+                                    <a href="pengumuman.html">Pengumuman</a>
+                                    <a href="agenda.html">Agenda</a>
                                 </div>
                             </div>
                             
@@ -486,13 +448,13 @@
                                     Profil <i class="fa-solid fa-chevron-down text-[9px] ml-1"></i>
                                 </button>
                                 <div class="dropdown-content">
-                                    <a href="profil.php">Profil Sekolah</a>
-                                    <a href="sejarah.php">Sejarah</a>
-                                    <a href="visi-misi.php">Visi & Misi</a>
-                                    <a href="struktur-organisasi.php">Struktur Organisasi</a>
-                                    <a href="tenaga-edukatif.php">Tenaga Edukatif</a>
-                                    <a href="tenaga-non-edukatif.php">Tenaga Non Edukatif</a>
-                                    <a href="sarana-prasarana.php">Sarana Prasarana</a>
+                                    <a href="profil.html">Profil Sekolah</a>
+                                    <a href="sejarah.html">Sejarah</a>
+                                    <a href="visi-misi.html">Visi & Misi</a>
+                                    <a href="struktur-organisasi.html">Struktur Organisasi</a>
+                                    <a href="tenaga-edukatif.html">Tenaga Edukatif</a>
+                                    <a href="tenaga-non-edukatif.html">Tenaga Non Edukatif</a>
+                                    <a href="sarana-prasarana.html">Sarana Prasarana</a>
                                 </div>
                             </div>
                             
@@ -501,23 +463,23 @@
                                     Pendidikan <i class="fa-solid fa-chevron-down text-[9px] ml-1"></i>
                                 </button>
                                 <div class="dropdown-content">
-                                    <a href="struktur-kurikulum.php">Struktur Kurikulum</a>
-                                    <a href="kalender-akademik.php">Kalender Akademik</a>
-                                    <a href="rekap-ujian.php">Rekap Ujian Sekolah</a>
-                                    <a href="ekstrakurikuler.php">Ekstrakurikuler</a>
+                                    <a href="struktur-kurikulum.html">Struktur Kurikulum</a>
+                                    <a href="kalender-akademik.html">Kalender Akademik</a>
+                                    <a href="rekap-ujian.html">Rekap Ujian Sekolah</a>
+                                    <a href="ekstrakurikuler.html">Ekstrakurikuler</a>
                                 </div>
                             </div>
                             
-                            <a href="peserta-didik.php" style="font-family: 'Inria Serif', serif;">Peserta Didik</a>
+                            <a href="peserta-didik.html" style="font-family: 'Inria Serif', serif;">Peserta Didik</a>
                             
                             <div class="dropdown">
                                 <button class="dropbtn" onclick="toggleDropdown(event, this)">
                                     Prestasi <i class="fa-solid fa-chevron-down text-[9px] ml-1"></i>
                                 </button>
                                 <div class="dropdown-content">
-                                    <a href="prestasi-sekolah.php">Prestasi Sekolah</a>
-                                    <a href="prestasi-siswa.php">Prestasi Siswa</a>
-                                    <a href="prestasi-guru.php">Prestasi Guru</a>
+                                    <a href="prestasi-sekolah.html">Prestasi Sekolah</a>
+                                    <a href="prestasi-siswa.html">Prestasi Siswa</a>
+                                    <a href="prestasi-guru.html">Prestasi Guru</a>
                                 </div>
                             </div>
                             
@@ -526,8 +488,8 @@
                                     Alumni <i class="fa-solid fa-chevron-down text-[9px] ml-1"></i>
                                 </button>
                                 <div class="dropdown-content">
-                                    <a href="data-alumni.php">Data Alumni</a>
-                                    <a href="penelusuran-alumni.php">Penelusuran Alumni</a>
+                                    <a href="data-alumni.html">Data Alumni</a>
+                                    <a href="penelusuran-alumni.html">Penelusuran Alumni</a>
                                 </div>
                             </div>
                             
@@ -536,8 +498,8 @@
                                     Galeri <i class="fa-solid fa-chevron-down text-[9px] ml-1"></i>
                                 </button>
                                 <div class="dropdown-content">
-                                    <a href="galeri-foto.php">Foto</a>
-                                    <a href="galeri-video.php">Video</a>
+                                    <a href="galeri-foto.html">Foto</a>
+                                    <a href="galeri-video.html">Video</a>
                                 </div>
                             </div>
                             
@@ -549,7 +511,7 @@
                                     <a href="https://siak.smpn1buayan.sch.id/">SIAK</a>
                                 </div>
                             </div>
-                            <a href="download.php" style="color:#333434; font-family: 'Inria Serif', serif;">Download</a>
+                            <a href="download.html" style="color:#333434; font-family: 'Inria Serif', serif;">Download</a>
                         </div>
                     </div>
                 </div>
@@ -562,64 +524,64 @@
                     <div style="padding: 0 25px;">
                         <div class="menu-title">Menu Navigasi</div>
                     </div>
-                    <a href="home.php">🏠 Home</a>
+                    <a href="home.html">🏠 Home</a>
                     
                     <div class="mobile-dropdown">
                         <button class="mobile-dropbtn" onclick="toggleMobileDropdown(this)">📰 Berita</button>
                         <div class="mobile-dropdown-content">
-                            <a href="berita.php">Berita</a>
-                            <a href="pengumuman.php">Pengumuman</a>
-                            <a href="agenda.php">Agenda</a>
+                            <a href="berita.html">Berita</a>
+                            <a href="pengumuman.html">Pengumuman</a>
+                            <a href="agenda.html">Agenda</a>
                         </div>
                     </div>
                     
                     <div class="mobile-dropdown">
                         <button class="mobile-dropbtn" onclick="toggleMobileDropdown(this)">🏫 Profil</button>
                         <div class="mobile-dropdown-content">
-                            <a href="profil.php">Profil Sekolah</a>
-                            <a href="sejarah.php">Sejarah</a>
-                            <a href="visi-misi.php">Visi & Misi</a>
-                            <a href="struktur-organisasi.php">Struktur Organisasi</a>
-                            <a href="tenaga-edukatif.php">Tenaga Edukatif</a>
-                            <a href="tenaga-non-edukatif.php">Tenaga Non Edukatif</a>
-                            <a href="sarana-prasarana.php">Sarana Prasarana</a>
+                            <a href="profil.html">Profil Sekolah</a>
+                            <a href="sejarah.html">Sejarah</a>
+                            <a href="visi-misi.html">Visi & Misi</a>
+                            <a href="struktur-organisasi.html">Struktur Organisasi</a>
+                            <a href="tenaga-edukatif.html">Tenaga Edukatif</a>
+                            <a href="tenaga-non-edukatif.html">Tenaga Non Edukatif</a>
+                            <a href="sarana-prasarana.html">Sarana Prasarana</a>
                         </div>
                     </div>
                     
                     <div class="mobile-dropdown">
                         <button class="mobile-dropbtn" onclick="toggleMobileDropdown(this)">📚 Pendidikan</button>
                         <div class="mobile-dropdown-content">
-                            <a href="struktur-kurikulum.php">Struktur Kurikulum</a>
-                            <a href="kalender-akademik.php">Kalender Akademik</a>
-                            <a href="rekap-ujian.php">Rekap Ujian Sekolah</a>
-                            <a href="ekstrakurikuler.php">Ekstrakurikuler</a>
+                            <a href="struktur-kurikulum.html">Struktur Kurikulum</a>
+                            <a href="kalender-akademik.html">Kalender Akademik</a>
+                            <a href="rekap-ujian.html">Rekap Ujian Sekolah</a>
+                            <a href="ekstrakurikuler.html">Ekstrakurikuler</a>
                         </div>
                     </div>
                     
-                    <a href="peserta-didik.php" style="color:#0090EA; font-weight:700;">👨‍🎓 Peserta Didik</a>
+                    <a href="peserta-didik.html" style="color:#0090EA; font-weight:700;">👨‍🎓 Peserta Didik</a>
                     
                     <div class="mobile-dropdown">
                         <button class="mobile-dropbtn" onclick="toggleMobileDropdown(this)">🏆 Prestasi</button>
                         <div class="mobile-dropdown-content">
-                            <a href="prestasi-sekolah.php">Prestasi Sekolah</a>
-                            <a href="prestasi-siswa.php">Prestasi Siswa</a>
-                            <a href="prestasi-guru.php">Prestasi Guru</a>
+                            <a href="prestasi-sekolah.html">Prestasi Sekolah</a>
+                            <a href="prestasi-siswa.html">Prestasi Siswa</a>
+                            <a href="prestasi-guru.html">Prestasi Guru</a>
                         </div>
                     </div>
                     
                     <div class="mobile-dropdown">
                         <button class="mobile-dropbtn" onclick="toggleMobileDropdown(this)">👥 Alumni</button>
                         <div class="mobile-dropdown-content">
-                            <a href="data-alumni.php">Data Alumni</a>
-                            <a href="penelusuran-alumni.php">Penelusuran Alumni</a>
+                            <a href="data-alumni.html">Data Alumni</a>
+                            <a href="penelusuran-alumni.html">Penelusuran Alumni</a>
                         </div>
                     </div>
                     
                     <div class="mobile-dropdown">
                         <button class="mobile-dropbtn" onclick="toggleMobileDropdown(this)">🖼️ Galeri</button>
                         <div class="mobile-dropdown-content">
-                            <a href="galeri-foto.php">Foto</a>
-                            <a href="galeri-video.php">Video</a>
+                            <a href="galeri-foto.html">Foto</a>
+                            <a href="galeri-video.html">Video</a>
                         </div>
                     </div>
                     
@@ -630,7 +592,7 @@
                         </div>
                     </div>
                     
-                    <a href="download.php" class="block px-6 py-3 text-sm font-medium cursor-pointer hover:text-blue-600 transition border-b border-gray-100" style="font-family: 'Inria Serif', serif;">⬇️ Download</a>
+                    <a href="download.html" class="block px-6 py-3 text-sm font-medium cursor-pointer hover:text-blue-600 transition border-b border-gray-100" style="font-family: 'Inria Serif', serif;">⬇️ Download</a>
                 </div>
                 
                 <div class="menu-overlay" id="menuOverlay" onclick="closeMobileMenu()"></div>
@@ -666,29 +628,35 @@
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <?php foreach ($allData as $row): ?>
                                     <tr>
-                                        <td class="text-left-col font-semibold"><?= htmlspecialchars($row['tahun']) ?></td>
-                                        <td class="font-medium"><?= number_format($row['kelas_vii']) ?></td>
-                                        <td class="font-medium"><?= number_format($row['kelas_viii']) ?></td>
-                                        <td class="font-medium"><?= number_format($row['kelas_ix']) ?></td>
-                                        <td class="font-bold text-[#0090EA]"><?= number_format($row['jumlah']) ?></td>
+                                        <td class="text-left-col font-semibold">2023/2024</td>
+                                        <td class="font-medium">210</td>
+                                        <td class="font-medium">207</td>
+                                        <td class="font-medium">193</td>
+                                        <td class="font-bold text-[#0090EA]">610</td>
                                     </tr>
-                                    <?php endforeach; ?>
+                                    <tr>
+                                        <td class="text-left-col font-semibold">2024/2025</td>
+                                        <td class="font-medium">215</td>
+                                        <td class="font-medium">213</td>
+                                        <td class="font-medium">199</td>
+                                        <td class="font-bold text-[#0090EA]">627</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="text-left-col font-semibold">2025/2026</td>
+                                        <td class="font-medium">224</td>
+                                        <td class="font-medium">219</td>
+                                        <td class="font-medium">215</td>
+                                        <td class="font-bold text-[#0090EA]">658</td>
+                                    </tr>
                                 </tbody>
                                 <tfoot>
-                                    <?php
-                                    $totalVII = array_sum(array_column($allData, 'kelas_vii'));
-                                    $totalVIII = array_sum(array_column($allData, 'kelas_viii'));
-                                    $totalIX = array_sum(array_column($allData, 'kelas_ix'));
-                                    $totalSemua = $totalVII + $totalVIII + $totalIX;
-                                    ?>
                                     <tr style="background-color: #f3f4f6; border-top: 2px solid #d1d5db;">
                                         <td class="font-bold text-left-col">TOTAL KESELURUHAN</td>
-                                        <td class="font-bold"><?= number_format($totalVII) ?></td>
-                                        <td class="font-bold"><?= number_format($totalVIII) ?></td>
-                                        <td class="font-bold"><?= number_format($totalIX) ?></td>
-                                        <td class="font-bold text-[#0090EA]"><?= number_format($totalSemua) ?></td>
+                                        <td class="font-bold">649</td>
+                                        <td class="font-bold">639</td>
+                                        <td class="font-bold">607</td>
+                                        <td class="font-bold text-[#0090EA]">1,895</td>
                                     </tr>
                                 </tfoot>
                             </table>
@@ -759,7 +727,7 @@
                     <div class="self-stretch bg-[#FFFFFFCC] h-px my-4 mx-4 md:mx-5"></div>
                     
                     <div class="flex flex-col items-center self-stretch">
-                        <span class="text-white text-xs font-bold text-center px-4" style="font-family: 'Inria Serif', serif;">Copyright © 2021 - <?= date('Y') ?> SMP NEGERI 1 BUAYAN</span>
+                        <span class="text-white text-xs font-bold text-center px-4" style="font-family: 'Inria Serif', serif;">Copyright © 2021 - 2025 SMP NEGERI 1 BUAYAN</span>
                     </div>
                 </div>
             </div>

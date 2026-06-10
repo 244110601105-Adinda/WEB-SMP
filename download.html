@@ -3,15 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes">
-    <title>SMP Negeri 1 Buayan - Prestasi Sekolah</title>
+    <title>SMP Negeri 1 Buayan - Download</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
-    <!-- Google Fonts - Inria Serif (wajib seperti home) -->
+    <!-- Google Fonts - Inria Serif -->
     <link href="https://fonts.googleapis.com/css2?family=Inria+Serif:wght@300;400;700&display=swap" rel="stylesheet">
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: 'Inria Serif', serif; }
-
         .gradient-blue-vertical { background: linear-gradient(180deg, #0090EA, #005184); }
 
         /* ========== DROPDOWN (chevron seperti home) ========== */
@@ -114,7 +113,7 @@
             .footer-content { flex-direction: column; gap: 20px; margin-left: 20px !important; margin-right: 20px !important; }
             .footer-content .flex-1 { display: none; }
             .table-container { overflow-x: auto; }
-            .prestasi-table { min-width: 900px; }
+            .dl-table { min-width: 560px; }
         }
         @media (min-width: 769px) { .nav-menu-mobile { display: none !important; } }
 
@@ -122,53 +121,78 @@
         .fade-in { animation: fadeIn 0.5s ease forwards; }
 
         /* ========== TABLE ========== */
-        .prestasi-table { width: 100%; border-collapse: collapse; }
-        .prestasi-table th {
+        .dl-table { width: 100%; border-collapse: collapse; }
+        .dl-table th {
             background-color: #0090EA; color: white;
-            padding: 12px 14px; font-weight: 600; font-size: 12px;
-            text-align: center; white-space: nowrap;
+            padding: 12px 18px; font-weight: 700; font-size: 13px;
+            text-align: center;
             font-family: 'Inria Serif', serif;
         }
-        .prestasi-table th.text-left { text-align: left; }
-        .prestasi-table td {
-            padding: 10px 14px; border-bottom: 1px solid #e5e5e5;
-            color: #333434; font-size: 13px; text-align: center; vertical-align: middle;
+        .dl-table th.text-left { text-align: left; }
+        .dl-table td {
+            padding: 12px 18px; border-bottom: 1px solid #e5e5e5;
+            color: #333434; font-size: 13px; vertical-align: middle;
+            text-align: center;
             font-family: 'Inria Serif', serif;
         }
-        .prestasi-table td.text-left { text-align: left; }
-        .prestasi-table tbody tr:hover td { background-color: #f0f8ff; }
+        .dl-table td.text-left { text-align: left; }
+        .dl-table tbody tr:hover td { background-color: #f0f8ff; }
 
-        /* Badge tingkat (tetap ada untuk filter tapi tidak digunakan karena data kosong) */
-        .badge {
-            display: inline-block; padding: 3px 10px; border-radius: 20px;
-            font-size: 11px; font-weight: 700; white-space: nowrap;
-        }
-        .badge-kab  { background: #dbeafe; color: #1d4ed8; }
-        .badge-prov { background: #d1fae5; color: #065f46; }
-        .badge-nas  { background: #fef3c7; color: #92400e; }
-        .badge-int  { background: #ede9fe; color: #5b21b6; }
-        .badge-1 { background: #fef3c7; color: #92400e; }
-        .badge-2 { background: #e5e7eb; color: #374151; }
-        .badge-3 { background: #fde8d8; color: #9a3412; }
-        .badge-harapan { background: #d1fae5; color: #065f46; }
-
-        /* Filter bar */
-        .filter-select {
-            background-color: white; border: 1px solid #ddd;
-            border-radius: 8px; padding: 8px 32px 8px 14px;
-            font-size: 13px; cursor: pointer; appearance: none; -webkit-appearance: none;
-            background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23333434' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'><polyline points='6 9 12 15 18 9'></polyline></svg>");
-            background-repeat: no-repeat; background-position: right 10px center;
-            transition: border-color 0.2s;
+        /* Download link */
+        .dl-link {
+            color: #0090EA; font-weight: 600; text-decoration: none;
+            transition: color 0.2s;
+            display: inline-flex; align-items: center; gap: 5px;
             font-family: 'Inria Serif', serif;
         }
-        .filter-select:focus { outline: none; border-color: #0090EA; box-shadow: 0 0 0 2px rgba(0,144,234,0.2); }
+        .dl-link:hover { color: #005184; text-decoration: underline; }
 
-        /* Empty state */
-        .empty-row td { color: #9ca3af; font-style: italic; padding: 28px 14px; }
+        /* Search box */
+        .search-input {
+            border: 1px solid #d1d5db; border-radius: 20px;
+            padding: 7px 16px; font-size: 13px; outline: none;
+            transition: border-color 0.2s, box-shadow 0.2s;
+            width: 220px; background: white;
+            font-family: 'Inria Serif', serif;
+        }
+        .search-input:focus {
+            border-color: #0090EA;
+            box-shadow: 0 0 0 2px rgba(0,144,234,0.15);
+        }
+
+        /* Hits badge */
+        .hits-badge {
+            display: inline-block;
+            background: #e0f2fe; color: #0369a1;
+            padding: 2px 10px; border-radius: 20px;
+            font-size: 12px; font-weight: 600;
+            font-family: 'Inria Serif', serif;
+        }
+
+        /* File icon color by type */
+        .icon-pdf   { color: #dc2626; }
+        .icon-word  { color: #2563eb; }
+        .icon-excel { color: #16a34a; }
+        .icon-img   { color: #7c3aed; }
+        .icon-zip   { color: #d97706; }
+        .icon-file  { color: #6b7280; }
+
+        /* Empty row */
+        .empty-row td { color: #9ca3af; font-style: italic; padding: 24px; }
+
+        /* Pagination (tetap ada tapi tidak ditampilkan karena data hanya 1 baris) */
+        .page-btn {
+            padding: 5px 11px; border-radius: 6px; border: 1px solid #ddd;
+            background: white; cursor: pointer; font-size: 13px;
+            transition: all 0.2s; color: #333434;
+            font-family: 'Inria Serif', serif;
+        }
+        .page-btn:hover, .page-btn.active { background: #0090EA; color: white; border-color: #0090EA; }
+        .page-btn:disabled { opacity: 0.4; cursor: not-allowed; }
     </style>
 </head>
 <body>
+
     <div class="flex flex-col bg-white">
         <div class="flex flex-col items-start self-stretch bg-[#EAF1F4]">
             <div class="self-stretch">
@@ -184,85 +208,75 @@
                                 <span class="text-black text-xs" style="font-family: 'Inria Serif', serif;">Buayan</span>
                             </div>
                         </div>
-
                         <button class="mobile-menu-btn" onclick="toggleMobileMenu()">
                             <i class="fa-solid fa-bars"></i>
                         </button>
-
                         <div class="nav-menu-desktop">
-                            <a href="home.php" style="color:#333434;">Home</a>
-
+                            <a href="home.html" style="color:#333434;">Home</a>
                             <div class="dropdown">
                                 <button class="dropbtn" onclick="toggleDropdown(event,this)">
                                     Berita <i class="fa-solid fa-chevron-down text-[8px] ml-1"></i>
                                 </button>
                                 <div class="dropdown-content">
-                                    <a href="berita.php">Berita</a>
-                                    <a href="pengumuman.php">Pengumuman</a>
-                                    <a href="agenda.php">Agenda</a>
+                                    <a href="berita.html">Berita</a>
+                                    <a href="pengumuman.html">Pengumuman</a>
+                                    <a href="agenda.html">Agenda</a>
                                 </div>
                             </div>
-
                             <div class="dropdown">
                                 <button class="dropbtn" onclick="toggleDropdown(event,this)">
                                     Profil <i class="fa-solid fa-chevron-down text-[8px] ml-1"></i>
                                 </button>
                                 <div class="dropdown-content">
-                                    <a href="profil.php">Profil Sekolah</a>
-                                    <a href="sejarah.php">Sejarah</a>
-                                    <a href="visi-misi.php">Visi & Misi</a>
-                                    <a href="struktur-organisasi.php">Struktur Organisasi</a>
-                                    <a href="tenaga-edukatif.php">Tenaga Edukatif</a>
-                                    <a href="tenaga-non-edukatif.php">Tenaga Non Edukatif</a>
-                                    <a href="sarana-prasarana.php">Sarana Prasarana</a>
+                                    <a href="profil.html">Profil Sekolah</a>
+                                    <a href="sejarah.html">Sejarah</a>
+                                    <a href="visi-misi.html">Visi & Misi</a>
+                                    <a href="struktur-organisasi.html">Struktur Organisasi</a>
+                                    <a href="tenaga-edukatif.html">Tenaga Edukatif</a>
+                                    <a href="tenaga-non-edukatif.html">Tenaga Non Edukatif</a>
+                                    <a href="sarana-prasarana.html">Sarana Prasarana</a>
                                 </div>
                             </div>
-
                             <div class="dropdown">
                                 <button class="dropbtn" onclick="toggleDropdown(event,this)">
                                     Pendidikan <i class="fa-solid fa-chevron-down text-[8px] ml-1"></i>
                                 </button>
                                 <div class="dropdown-content">
-                                    <a href="struktur-kurikulum.php">Struktur Kurikulum</a>
-                                    <a href="kalender-akademik.php">Kalender Akademik</a>
-                                    <a href="rekap-ujian.php">Rekap Ujian Sekolah</a>
-                                    <a href="ekstrakurikuler.php">Ekstrakurikuler</a>
+                                    <a href="struktur-kurikulum.html">Struktur Kurikulum</a>
+                                    <a href="kalender-akademik.html">Kalender Akademik</a>
+                                    <a href="rekap-ujian.html">Rekap Ujian Sekolah</a>
+                                    <a href="ekstrakurikuler.html">Ekstrakurikuler</a>
                                 </div>
                             </div>
-
-                            <a href="peserta-didik.php" style="color:#333434;">Peserta Didik</a>
-
+                            <a href="peserta-didik.html" style="color:#333434;">Peserta Didik</a>
                             <div class="dropdown">
-                                <button class="dropbtn" onclick="toggleDropdown(event,this)" style="color:#0090EA;">
+                                <button class="dropbtn" onclick="toggleDropdown(event,this)">
                                     Prestasi <i class="fa-solid fa-chevron-down text-[8px] ml-1"></i>
                                 </button>
                                 <div class="dropdown-content">
-                                    <a href="prestasi-sekolah.php">Prestasi Sekolah</a>
-                                    <a href="prestasi-siswa.php">Prestasi Siswa</a>
-                                    <a href="prestasi-guru.php">Prestasi Guru</a>
+                                    <a href="prestasi-sekolah.html">Prestasi Sekolah</a>
+                                    <a href="prestasi-siswa.html">Prestasi Siswa</a>
+                                    <a href="prestasi-guru.html">Prestasi Guru</a>
                                 </div>
                             </div>
-
                             <div class="dropdown">
                                 <button class="dropbtn" onclick="toggleDropdown(event,this)">
                                     Alumni <i class="fa-solid fa-chevron-down text-[8px] ml-1"></i>
                                 </button>
                                 <div class="dropdown-content">
-                                    <a href="data-alumni.php">Data Alumni</a>
-                                    <a href="penelusuran-alumni.php">Penelusuran Alumni</a>
+                                    <a href="data-alumni.html">Data Alumni</a>
+                                    <a href="penelusuran-alumni.html">Penelusuran Alumni</a>
                                 </div>
                             </div>
-
                             <div class="dropdown">
                                 <button class="dropbtn" onclick="toggleDropdown(event,this)">
                                     Galeri <i class="fa-solid fa-chevron-down text-[8px] ml-1"></i>
                                 </button>
                                 <div class="dropdown-content">
-                                    <a href="galeri-foto.php">Foto</a>
-                                    <a href="galeri-video.php">Video</a>
+                                    <a href="galeri-foto.html">Foto</a>
+                                    <a href="galeri-video.html">Video</a>
                                 </div>
                             </div>
-
                             <div class="dropdown">
                                 <button class="dropbtn" onclick="toggleDropdown(event,this)">
                                     SIM <i class="fa-solid fa-chevron-down text-[8px] ml-1"></i>
@@ -271,8 +285,7 @@
                                     <a href="https://siak.smpn1buayan.sch.id/" target="_blank">SIAK</a>
                                 </div>
                             </div>
-
-                            <a href="download.php" class="text-black text-sm font-bold px-3 py-1 cursor-pointer hover:text-blue-600 transition">Download</a>
+                            <a href="download.html" style="color:#0090EA;">Download</a>
                         </div>
                     </div>
                 </div>
@@ -281,151 +294,131 @@
                 <div class="nav-menu-mobile" id="navMenuMobile">
                     <button class="close-menu-btn" onclick="closeMobileMenu()"><i class="fa-solid fa-times"></i></button>
                     <div style="padding:0 25px;"><div class="menu-title">Menu Navigasi</div></div>
-                    <a href="home.php">🏠 Home</a>
+                    <a href="home.html">🏠 Home</a>
                     <div class="mobile-dropdown">
                         <button class="mobile-dropbtn" onclick="toggleMobileDropdown(this)">📰 Berita</button>
                         <div class="mobile-dropdown-content">
-                            <a href="berita.php">Berita</a><a href="pengumuman.php">Pengumuman</a><a href="agenda.php">Agenda</a>
+                            <a href="berita.html">Berita</a><a href="pengumuman.html">Pengumuman</a><a href="agenda.html">Agenda</a>
                         </div>
                     </div>
                     <div class="mobile-dropdown">
                         <button class="mobile-dropbtn" onclick="toggleMobileDropdown(this)">🏫 Profil</button>
                         <div class="mobile-dropdown-content">
-                            <a href="profil.php">Profil Sekolah</a><a href="sejarah.php">Sejarah</a>
-                            <a href="visi-misi.php">Visi & Misi</a><a href="struktur-organisasi.php">Struktur Organisasi</a>
-                            <a href="tenaga-edukatif.php">Tenaga Edukatif</a><a href="tenaga-non-edukatif.php">Tenaga Non Edukatif</a>
-                            <a href="sarana-prasarana.php">Sarana Prasarana</a>
+                            <a href="profil.html">Profil Sekolah</a><a href="sejarah.html">Sejarah</a>
+                            <a href="visi-misi.html">Visi & Misi</a><a href="struktur-organisasi.html">Struktur Organisasi</a>
+                            <a href="tenaga-edukatif.html">Tenaga Edukatif</a><a href="tenaga-non-edukatif.html">Tenaga Non Edukatif</a>
+                            <a href="sarana-prasarana.html">Sarana Prasarana</a>
                         </div>
                     </div>
                     <div class="mobile-dropdown">
                         <button class="mobile-dropbtn" onclick="toggleMobileDropdown(this)">📚 Pendidikan</button>
                         <div class="mobile-dropdown-content">
-                            <a href="struktur-kurikulum.php">Struktur Kurikulum</a><a href="kalender-akademik.php">Kalender Akademik</a>
-                            <a href="rekap-ujian.php">Rekap Ujian Sekolah</a><a href="ekstrakurikuler.php">Ekstrakurikuler</a>
+                            <a href="struktur-kurikulum.html">Struktur Kurikulum</a><a href="kalender-akademik.html">Kalender Akademik</a>
+                            <a href="rekap-ujian.html">Rekap Ujian Sekolah</a><a href="ekstrakurikuler.html">Ekstrakurikuler</a>
                         </div>
                     </div>
-                    <a href="peserta-didik.php">👨‍🎓 Peserta Didik</a>
-                    <div class="mobile-dropdown active">
-                        <button class="mobile-dropbtn" onclick="toggleMobileDropdown(this)" style="color:#0090EA;font-weight:700;">🏆 Prestasi</button>
+                    <a href="peserta-didik.html">👨‍🎓 Peserta Didik</a>
+                    <div class="mobile-dropdown">
+                        <button class="mobile-dropbtn" onclick="toggleMobileDropdown(this)">🏆 Prestasi</button>
                         <div class="mobile-dropdown-content">
-                            <a href="prestasi-sekolah.php" style="color:#0090EA;font-weight:600;">Prestasi Sekolah</a>
-                            <a href="prestasi-siswa.php">Prestasi Siswa</a><a href="prestasi-guru.php">Prestasi Guru</a>
+                            <a href="prestasi-sekolah.html">Prestasi Sekolah</a>
+                            <a href="prestasi-siswa.html">Prestasi Siswa</a>
+                            <a href="prestasi-guru.html">Prestasi Guru</a>
                         </div>
                     </div>
                     <div class="mobile-dropdown">
                         <button class="mobile-dropbtn" onclick="toggleMobileDropdown(this)">👥 Alumni</button>
                         <div class="mobile-dropdown-content">
-                            <a href="data-alumni.php">Data Alumni</a><a href="penelusuran-alumni.php">Penelusuran Alumni</a>
+                            <a href="data-alumni.html">Data Alumni</a><a href="penelusuran-alumni.html">Penelusuran Alumni</a>
                         </div>
                     </div>
                     <div class="mobile-dropdown">
                         <button class="mobile-dropbtn" onclick="toggleMobileDropdown(this)">🖼️ Galeri</button>
-                        <div class="mobile-dropdown-content"><a href="galeri-foto.php">Foto</a><a href="galeri-video.php">Video</a></div>
+                        <div class="mobile-dropdown-content"><a href="galeri-foto.html">Foto</a><a href="galeri-video.html">Video</a></div>
                     </div>
                     <div class="mobile-dropdown">
                         <button class="mobile-dropbtn" onclick="toggleMobileDropdown(this)">💻 SIM</button>
                         <div class="mobile-dropdown-content"><a href="https://siak.smpn1buayan.sch.id/" target="_blank">SIAK</a></div>
                     </div>
-                    <a href="download.php" class="block px-6 py-3 text-sm font-medium cursor-pointer hover:text-blue-600 transition border-b border-gray-100" style="font-family: 'Inria Serif', serif;">⬇️ Download</a>
+                    <a href="download.html" style="color:#0090EA;font-weight:700;">⬇️ Download</a>
                 </div>
                 <div class="menu-overlay" id="menuOverlay" onclick="closeMobileMenu()"></div>
 
-                <!-- ============ HALAMAN PRESTASI SEKOLAH (TABEL KOSONG) ============ -->
-                <div class="bg-[#EAF1F4] pb-12">
+                <!-- ============ HALAMAN DOWNLOAD ============ -->
+                <div class="bg-[#EAF1F4] pb-14">
 
-                    <!-- Judul PRESTASI SEKOLAH ukuran 4xl (text-4xl) -->
+                    <!-- Judul ukuran 4xl -->
                     <div class="text-center pt-8 pb-4">
-                        <h1 class="text-[#333434] text-4xl font-bold tracking-wider" style="font-family: 'Inria Serif', serif;">PRESTASI SEKOLAH</h1>
+                        <h1 class="text-[#333434] text-4xl font-bold tracking-wider" style="font-family: 'Inria Serif', serif;">DOWNLOAD</h1>
                     </div>
-
-                    <!-- Garis -->
                     <div class="flex justify-center px-4">
                         <div class="w-[90%] h-px bg-[#636566]"></div>
                     </div>
 
                     <!-- Konten -->
-                    <div class="max-w-6xl mx-auto px-4 mt-10">
+                    <div class="max-w-5xl mx-auto px-4 mt-10">
 
-                        <!-- Filter Bar (tetap ada untuk UI, tidak mempengaruhi data kosong) -->
-                        <form method="GET" action="">
-                            <div class="flex flex-wrap gap-3 items-center justify-between mb-6">
-                                <div class="flex flex-wrap gap-3 items-center">
-                                    <div class="flex items-center gap-2">
-                                        <label class="text-[#636566] text-sm font-medium" style="font-family: 'Inria Serif', serif;">Tahun Pelajaran:</label>
-                                        <select name="tahun" class="filter-select" onchange="this.form.submit()">
-                                            <option value="Semua" selected>Semua</option>
-                                            <option value="2025/2026">2025/2026</option>
-                                            <option value="2024/2025">2024/2025</option>
-                                            <option value="2023/2024">2023/2024</option>
-                                        </select>
-                                    </div>
-                                    <div class="flex items-center gap-2">
-                                        <label class="text-[#636566] text-sm font-medium" style="font-family: 'Inria Serif', serif;">Jenis:</label>
-                                        <select name="jenis" class="filter-select" onchange="this.form.submit()">
-                                            <option value="Semua" selected>Semua</option>
-                                            <option value="Akademik">Akademik</option>
-                                            <option value="Seni">Seni</option>
-                                            <option value="Olahraga">Olahraga</option>
-                                            <option value="Kesehatan">Kesehatan</option>
-                                        </select>
-                                    </div>
-                                </div>
-                                <span class="text-[#636566] text-sm" style="font-family: 'Inria Serif', serif;">
-                                    Menampilkan <strong>0</strong> data
-                                </span>
+                        <!-- Search Bar (tetap ada untuk UI) -->
+                        <div class="flex justify-end items-center mb-4 gap-3">
+                            <label class="text-[#636566] text-sm font-medium" style="font-family: 'Inria Serif', serif;">Search :</label>
+                            <div>
+                                <input
+                                    type="text"
+                                    name="search"
+                                    placeholder="Cari nama file..."
+                                    class="search-input"
+                                    id="searchInput">
                             </div>
-                        </form>
+                        </div>
 
-                        <!-- Tabel (KOSONG, tidak ada data) -->
+                        <!-- Tabel (isi sesuai gambar: hanya 1 baris data) -->
                         <div class="table-container bg-white rounded-2xl shadow-lg overflow-hidden">
-                            <table class="prestasi-table">
+                            <table class="dl-table" id="downloadTable">
                                 <thead>
                                     <tr>
-                                        <th style="width:36px;">NO</th>
-                                        <th style="width:80px;">TP</th>
-                                        <th class="text-left" style="min-width:180px;">NAMA LOMBA</th>
-                                        <th style="width:90px;">JENIS</th>
-                                        <th style="width:90px;">PRESTASI</th>
-                                        <th style="width:60px;">KAB</th>
-                                        <th style="width:70px;">KRSDN</th>
-                                        <th style="width:60px;">PROV</th>
-                                        <th style="width:60px;">NAS</th>
-                                        <th style="width:50px;">INT</th>
-                                        <th style="min-width:140px;">KETERANGAN</th>
-                                        <th style="width:80px;">GAMBAR</th>
+                                        <th class="text-left" style="width:40%;">NAMA FILE</th>
+                                        <th style="width:20%;">TANGGAL UPLOAD</th>
+                                        <th style="width:15%;">HITS</th>
+                                        <th style="width:25%;">DOWNLOAD</th>
                                     </tr>
                                 </thead>
-                                <tbody>
-                                    <tr class="empty-row">
-                                        <td colspan="12" style="text-align: center; padding: 40px 20px; font-family: 'Inria Serif', serif;">
-                                            <i class="fa-regular fa-trophy text-3xl mb-2 block text-[#0090EA]"></i>
-                                            Belum ada data prestasi sekolah.
+                                <tbody id="tableBody">
+                                    <tr class="data-row">
+                                        <td class="text-left">
+                                            <div class="flex items-center gap-2">
+                                                <i class="fa-solid fa-file-pdf icon-pdf text-base shrink-0"></i>
+                                                <span class="font-medium" style="font-family: 'Inria Serif', serif;">Tata Tertib dan Tata Krama</span>
+                                            </div>
+                                         </td>
+                                        <td>20 Mei 2026</td>
+                                        <td>
+                                            <span class="hits-badge">1,797</span>
+                                        </td>
+                                        <td>
+                                            <a href="https://www.smpn1buayan.sch.id/download/hits/TATA_TERTIB_SMPN_1_BUAYAN.pdf"
+                                               download
+                                               class="dl-link"
+                                               onclick="incrementHits(this)">
+                                                <i class="fa-solid fa-download text-xs"></i>
+                                                Unduh disini
+                                            </a>
                                         </td>
                                     </tr>
                                 </tbody>
                             </table>
                         </div>
 
-                        <!-- Keterangan Kolom -->
-                        <div class="mt-6 bg-white rounded-2xl shadow-md p-5">
-                            <div class="flex items-center gap-3 mb-3">
-                                <i class="fa-solid fa-circle-info text-[#0090EA] text-xl"></i>
-                                <h3 class="text-[#333434] font-bold" style="font-family: 'Inria Serif', serif;">Keterangan Kolom</h3>
-                            </div>
-                            <div class="flex flex-wrap gap-x-8 gap-y-1 text-sm text-[#636566]" style="font-family: 'Inria Serif', serif;">
-                                <span><strong>TP</strong> = Tahun Pelajaran</span>
-                                <span><strong>KAB</strong> = Tingkat Kabupaten</span>
-                                <span><strong>KRSDN</strong> = Tingkat Kecamatan / Korwilcam</span>
-                                <span><strong>PROV</strong> = Tingkat Provinsi</span>
-                                <span><strong>NAS</strong> = Tingkat Nasional</span>
-                                <span><strong>INT</strong> = Tingkat Internasional</span>
-                            </div>
+                        <!-- Pagination Info (tetap ada tapi tidak diperlukan karena data hanya 1 baris) -->
+                        <div class="flex items-center justify-between mt-5 flex-wrap gap-3">
+                            <span class="text-[#636566] text-sm" style="font-family: 'Inria Serif', serif;" id="infoText">
+                                Menampilkan 1 dari 1 file
+                            </span>
                         </div>
 
                     </div>
                 </div>
 
-                <!-- ============ FOOTER (Font Inria Serif) ============ -->
+                <!-- ============ FOOTER ============ -->
                 <div class="self-stretch py-6 gradient-blue-vertical">
                     <div class="flex items-start self-stretch mb-8 ml-4 md:ml-8 mr-4 md:mr-8 footer-content flex-wrap">
                         <div class="flex flex-col shrink-0 items-start gap-2 w-full md:w-auto">
@@ -441,9 +434,7 @@
                                 Sekolah Menengah Pertama Negeri 1 Buayan - Unggul dalam Mutu, Terampil, Santun dalam Perilaku, Berwawasan Lingkungan, Berdasarkan Iman dan Taqwa
                             </span>
                         </div>
-
                         <div class="flex-1 hidden md:block"></div>
-
                         <div class="flex flex-col shrink-0 items-start my-1 gap-3 w-full md:w-auto">
                             <span class="text-white text-sm font-bold ml-0 md:ml-8" style="font-family: 'Inria Serif', serif;">Kontak</span>
                             <div class="flex flex-col items-start gap-2">
@@ -465,9 +456,7 @@
                                 </div>
                             </div>
                         </div>
-
                         <div class="flex-1 hidden md:block"></div>
-
                         <div class="flex flex-col shrink-0 items-start mt-4 md:mt-0 gap-2 w-full md:w-auto">
                             <span class="text-white text-sm font-bold" style="font-family: 'Inria Serif', serif;">Media Sosial</span>
                             <div class="flex items-center gap-2">
@@ -478,11 +467,9 @@
                             </div>
                         </div>
                     </div>
-
                     <div class="self-stretch bg-[#FFFFFFCC] h-px my-4 mx-4 md:mx-5"></div>
-
                     <div class="flex flex-col items-center self-stretch">
-                        <span class="text-white text-xs font-bold text-center px-4" style="font-family: 'Inria Serif', serif;">Copyright © 2021 - <?= date('Y') ?> SMP NEGERI 1 BUAYAN</span>
+                        <span class="text-white text-xs font-bold text-center px-4" style="font-family: 'Inria Serif', serif;">Copyright © 2021 - 2025 SMP NEGERI 1 BUAYAN</span>
                     </div>
                 </div>
 
@@ -495,12 +482,50 @@
             let t = document.querySelector('.toast-notification');
             if(t) t.remove();
             t = document.createElement('div');
-            t.className = 'toast-notification';
             t.style.cssText = 'position:fixed;bottom:20px;right:20px;background:#333;color:white;padding:10px 20px;border-radius:8px;z-index:9999;font-size:13px;font-family:"Inria Serif",serif;';
             t.textContent = msg;
             document.body.appendChild(t);
             setTimeout(() => { if(t) t.remove(); }, 2000);
         }
+
+        // Simulasi increment hits di sisi client
+        function incrementHits(el) {
+            const row  = el.closest('tr');
+            const badge = row.querySelector('.hits-badge');
+            if (badge) {
+                const current = parseInt(badge.textContent.replace(/,/g, '')) || 0;
+                badge.textContent = (current + 1).toLocaleString('id-ID');
+            }
+        }
+
+        // Search functionality
+        const searchInput = document.getElementById('searchInput');
+        const infoText = document.getElementById('infoText');
+        
+        function searchTable() {
+            const filter = searchInput.value.toLowerCase();
+            const rows = document.querySelectorAll('#tableBody .data-row');
+            let visibleCount = 0;
+            
+            rows.forEach(row => {
+                const nameCell = row.cells[0];
+                const fileName = nameCell.textContent.toLowerCase();
+                if (fileName.includes(filter)) {
+                    row.style.display = '';
+                    visibleCount++;
+                } else {
+                    row.style.display = 'none';
+                }
+            });
+            
+            if (visibleCount === 0) {
+                infoText.innerHTML = 'Menampilkan 0 dari 1 file (hasil pencarian "<strong>' + filter + '</strong>")';
+            } else {
+                infoText.innerHTML = 'Menampilkan ' + visibleCount + ' dari 1 file' + (filter ? ' (hasil pencarian "<strong>' + filter + '</strong>")' : '');
+            }
+        }
+        
+        searchInput.addEventListener('keyup', searchTable);
 
         function toggleDropdown(event, button) {
             event.stopPropagation();
@@ -511,9 +536,7 @@
         document.addEventListener('click', () => {
             document.querySelectorAll('.dropdown').forEach(d => d.classList.remove('show'));
         });
-
         function toggleMobileDropdown(btn) { btn.closest('.mobile-dropdown').classList.toggle('active'); }
-
         function toggleMobileMenu() {
             document.getElementById('navMenuMobile').classList.toggle('show');
             document.getElementById('menuOverlay').classList.toggle('show');
@@ -525,7 +548,6 @@
             document.body.style.overflow = '';
         }
         window.addEventListener('resize', () => { if(window.innerWidth > 768) closeMobileMenu(); });
-
         document.addEventListener('DOMContentLoaded', () => { document.body.classList.add('fade-in'); });
     </script>
 </body>
